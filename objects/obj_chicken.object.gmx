@@ -74,32 +74,27 @@ if (wait &gt; 0) {
     
     
     
-    
-if (44 &lt; direction &lt; 135)
-{
-    sprite_index = spr_henBack;
-}
 
 
-if (134 &lt; direction &lt; 225)
-{
-    sprite_index = spr_henLeft;
-}
-
-if (224 &lt; direction &lt; 315)
-{
-    sprite_index = spr_henFront;
-}
-
-if (direction &lt; 44)
-{
-    sprite_index = spr_henRight;
-}
-
-if (direction &gt; 314)
-{
-    sprite_index = spr_henRight;
-}
+ if (direction &gt; 315 or direction &lt;= 45)
+        {
+        sprite_index  = spr_henRight;
+        }
+        
+    if (direction &gt; 45 and direction &lt;= 135)
+        {
+        sprite_index = spr_henBack;
+        }
+        
+    if (direction &gt; 135 and direction &lt;= 225)
+        {
+        sprite_index = spr_henLeft;
+        }
+        
+    if (direction &gt; 225 and direction &lt;= 315)
+        {
+        sprite_index = spr_henFront;
+        }
 
 </string>
           </argument>

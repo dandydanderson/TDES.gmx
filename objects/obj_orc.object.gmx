@@ -28,9 +28,11 @@
             <string>str = 5;
 intel = 2;
 agi = 2;
+alive = true;
 
 hp = 10;
 mana = intel * 2;
+image_speed = .5;
 
 
 dir = "down";
@@ -103,6 +105,24 @@ if (hitStun &gt; 0)
 speed = -1 * hitStun;
 hitStun = hitStun - 1;
 }
+
+if(hp &lt;1 and alive == true)
+    {
+    image_speed = .25;
+    sprite_index = spr_orc_death;
+    alive = false;
+    speed = 0;
+
+    }
+    
+if (alive = false)
+    {
+    if (image_index == 5)
+        {
+            image_speed = 0;
+            friction = 10;
+        }
+    }
 </string>
           </argument>
         </arguments>
@@ -131,7 +151,32 @@ target_y = Testp1.y;
 direction = point_direction(x, y, target_x, target_y);
 
 
-if (hitStun == 0){
+
+if (alive == true)
+    {
+     if (direction &gt; 315 or direction &lt;= 45)
+        {
+        sprite_index  = spr_orc_walk_right;
+        }
+        
+    if (direction &gt; 45 and direction &lt;= 135)
+        {
+        sprite_index = spr_orc_walk_up;
+        }
+        
+    if (direction &gt; 135 and direction &lt;= 225)
+        {
+        sprite_index = spr_orc_walk_left;
+        }
+        
+    if (direction &gt; 225 and direction &lt;= 315)
+        {
+        sprite_index = spr_orc_walk_down;
+        }
+    
+    
+
+if (hitStun == 0 ){
     if( distance_to_object(Testp1) &gt; 10){
     speed = 1;
 
@@ -139,6 +184,8 @@ if (hitStun == 0){
 else {
 speed = 0;
     }}
+    
+        }
     
 </string>
           </argument>

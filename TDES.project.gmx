@@ -35,6 +35,11 @@
       <sprite>sprites\spr_orc_idle_up</sprite>
       <sprite>sprites\spr_orc_idle_right</sprite>
       <sprite>sprites\spr_orc_idle_down</sprite>
+      <sprite>sprites\spr_orc_death</sprite>
+      <sprite>sprites\spr_orc_walk_left</sprite>
+      <sprite>sprites\spr_orc_walk_right</sprite>
+      <sprite>sprites\spr_orc_walk_up</sprite>
+      <sprite>sprites\spr_orc_walk_down</sprite>
     </sprites>
     <sprites name="hitboxes">
       <sprite>sprites\spr_sword_hb_up</sprite>

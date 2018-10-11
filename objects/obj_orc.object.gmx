@@ -55,6 +55,11 @@ hit = false;
 hitStun = 0;
 hitBy = -1;
 
+//add to p1_enemies list
+
+ds_list_add(global.p1_enemies, self);
+
+
 </string>
           </argument>
         </arguments>

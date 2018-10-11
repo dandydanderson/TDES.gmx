@@ -45,6 +45,9 @@ tempState = "idle";
 
 last_sprite = 0;
 
+// target list from enemies that are active
+
+global.p1_enemies = ds_list_create();
 
 //hitbox and hurtbox code
 

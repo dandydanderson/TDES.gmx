@@ -81,6 +81,7 @@
     </scripts>
   </scripts>
   <objects name="objects">
+    <object>objects\player_unit_controller</object>
     <object>objects\p1_target</object>
     <object>objects\obj_invisWall</object>
     <objects name="TestPlayers">

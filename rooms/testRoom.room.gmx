@@ -55,13 +55,13 @@
     <instance objName="obj_invisWall" x="10" y="480" name="inst_B09A9651" locked="0" code="" scaleX="6.15999984741211" scaleY="18.625" colour="4294967295" rotation="0"/>
     <instance objName="obj_invisWall" x="620" y="727" name="inst_9A30BD8F" locked="0" code="" scaleX="36.625" scaleY="4.46999979019165" colour="4294967295" rotation="0"/>
     <instance objName="obj_invisWall" x="1044" y="374" name="inst_DEAA7EC1" locked="0" code="" scaleX="3.4193549156189" scaleY="21.2299995422363" colour="4294967295" rotation="0"/>
-    <instance objName="Testp1" x="550" y="440" name="inst_7909857D" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="debugInfo" x="110" y="220" name="inst_28ED41BE" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_orc" x="220" y="440" name="inst_A107FDD3" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_Hobbs" x="660" y="330" name="inst_4A366939" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_door" x="431" y="132" name="inst_BEC69215" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_chicken" x="770" y="440" name="inst_18407F5F" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_orc" x="220" y="220" name="inst_78F6A6EE" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_chicken" x="770" y="330" name="inst_CF3FD739" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_chicken" x="880" y="440" name="inst_73F0E91B" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="player_unit_controller" x="196" y="223" name="inst_9CF44F55" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles>
     <tile bgName="testTileSet" x="110" y="220" w="110" h="110" xo="360" yo="60" id="10000028" name="inst_AD1C3288" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>

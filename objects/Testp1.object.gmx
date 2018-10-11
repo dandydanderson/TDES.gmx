@@ -25,7 +25,14 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>str = 5;
+            <string>//add player to global player unit list
+
+
+
+ds_list_add(global.player_units, self);
+
+alive = true;
+str = 5;
 intel = 5;
 agi = 5;
 
@@ -669,6 +676,17 @@ if(state == "target"){
 
 if(p == 0) { speed = 0;}
 
+
+
+//check for target
+
+if(!instance_exists(p1_target) and substate == "guard")
+    {
+    state = "notarget";
+    substate = "idle";
+
+    }
+
 </string>
           </argument>
         </arguments>
@@ -725,7 +743,7 @@ Shoot/throw
 
 //Targeting script
  
-if (keyboard_check_pressed(vk_space) &amp;&amp; !instance_exists(p1_target) &amp;&amp; instance_exists(obj_enemy))
+if (keyboard_check_pressed(vk_space) &amp;&amp; !instance_exists(p1_target) &amp;&amp; ds_list_size(global.p1_enemies)!= 0)
     {
     instance_create(0,0,p1_target);
     substate = "guard";

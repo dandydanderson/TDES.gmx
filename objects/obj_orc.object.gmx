@@ -60,6 +60,9 @@ hitBy = -1;
 ds_list_add(global.p1_enemies, self);
 
 
+
+
+
 </string>
           </argument>
         </arguments>
@@ -128,6 +131,33 @@ if (alive = false)
             friction = 10;
         }
     }
+    
+if (alive == false)
+    {
+        
+    for(i = 0; i &lt; ds_list_size(global.p1_enemies); i++)
+        {
+        if(self == ds_list_find_value(global.p1_enemies, i))
+            {
+            ds_list_delete(global.p1_enemies, i);
+            }
+        }
+    
+    }
+    
+    
+/*
+{
+var siz = ds_list_size(argument0),
+    prefix_length = string_length(argument1);
+for (var i = 0; i &lt; siz; i++) {
+  var str = argument0[| i];
+  if (is_string(str) &amp;&amp; string_copy(str, 1, prefix_length) == argument1) {
+    return str;
+  }
+}
+return undefined;
+}
 </string>
           </argument>
         </arguments>

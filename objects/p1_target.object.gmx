@@ -28,6 +28,7 @@
             <string>target = ds_list_find_value(global.p1_enemies, 0);
 x = target.x;
 y = target.y;
+targetnum = 1;
 
 Testp1.state = "target";
 
@@ -51,6 +52,51 @@ Testp1.state = "target";
         </arguments>
       </action>
     </event>
+    <event eventtype="1" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string></string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="3" enumb="2">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>if (targetnum &gt;= ds_list_size(global.p1_enemies)) {targetnum = 0;}
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
     <event eventtype="3" enumb="0">
       <action>
         <libid>1</libid>
@@ -68,53 +114,25 @@ Testp1.state = "target";
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>x = target.x;
-y = target.y;
+            <string>depth = -y + 64;
 
-
-
-
-
-
-/*
-depth = -y + 64;
-
-if(enemy[targetnum].hp &gt; 0)
-    {
-
-target = enemy[targetnum];
 x = target.x;
 y = target.y;
-    }
+
+if(target.hp &lt; 1) {instance_destroy();}
+
+
+
+
     
-if(keyboard_check_pressed(vk_space or enemy[targetnum].hp &lt;= 0))
+if(keyboard_check_pressed(vk_space))
     {
 
-    
-    if (targetnum &lt; array_length_1d(enemy) - 1)
-        {
-        targetnum = targetnum + 1;
-        target = enemy[targetnum];
-        
-        }
-    
-    else
-        {
-       instance_destroy();
-       Testp1.state = "notarget";
-        }
-    
+      target = ds_list_find_value(global.p1_enemies, targetnum);
+      targetnum = targetnum + 1;
     }
     
-    //if target dies, remove targeting
-    
-    if(target.hp &lt; 1)
-        {
-            instance_destroy();
-        }
-    
-
-
+   
 </string>
           </argument>
         </arguments>

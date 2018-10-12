@@ -738,7 +738,7 @@ Shoot/throw
 
 
 */
-
+depth = -y;
 
 
 //Targeting script

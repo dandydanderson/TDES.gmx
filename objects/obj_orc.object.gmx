@@ -29,15 +29,20 @@
 intel = 2;
 agi = 2;
 alive = true;
+speed = 0;
 
 hp = 10;
 mana = intel * 2;
 image_speed = .5;
 
+wait = 0;
+
 
 dir = "down";
 state = "peaceful";
 substate = "idle";
+
+target = -1;
 
 
 depth = -y;
@@ -146,18 +151,22 @@ if (alive == false)
     }
     
     
-/*
-{
-var siz = ds_list_size(argument0),
-    prefix_length = string_length(argument1);
-for (var i = 0; i &lt; siz; i++) {
-  var str = argument0[| i];
-  if (is_string(str) &amp;&amp; string_copy(str, 1, prefix_length) == argument1) {
-    return str;
-  }
-}
-return undefined;
-}
+for (i = 0; i &lt; ds_list_size(global.player_units); i++)
+    {
+    if (distance_to_object(ds_list_find_value(global.player_units,i)) &lt; 100)
+        {
+    state = "aggro";
+    target = ds_list_find_value(global.player_units,i);
+        }
+    }
+    
+if (state == "peaceful") {
+        script_execute(scr_wander, 180, 7);
+        if(speed &gt; 0) {speed = speed - 1;}
+    }
+
+
+
 </string>
           </argument>
         </arguments>
@@ -183,7 +192,7 @@ return undefined;
             <string>target_x = Testp1.x;
 target_y = Testp1.y;
 
-direction = point_direction(x, y, target_x, target_y);
+if ( state == "aggro") {direction = point_direction(x, y, target_x, target_y);}
 
 
 
@@ -212,13 +221,10 @@ if (alive == true)
     
 
 if (hitStun == 0 ){
-    if( distance_to_object(Testp1) &gt; 10){
+    if( distance_to_object(Testp1) &gt; 10 and state == "aggro"){
     speed = 1;
 
-}
-else {
-speed = 0;
-    }}
+}}
     
         }
     

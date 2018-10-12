@@ -55,12 +55,23 @@
     <sprites name="furniture">
       <sprite>sprites\spr_door</sprite>
       <sprite>sprites\spr_door_open</sprite>
+      <sprite>sprites\spr_crate1</sprite>
+      <sprite>sprites\spr_barrel1</sprite>
     </sprites>
     <sprites name="NPCS">
       <sprite>sprites\spr_henFront</sprite>
       <sprite>sprites\spr_henBack</sprite>
       <sprite>sprites\spr_henRight</sprite>
       <sprite>sprites\spr_henLeft</sprite>
+    </sprites>
+    <sprites name="buildings">
+      <sprite>sprites\spr_barn</sprite>
+      <sprite>sprites\spr_haystack</sprite>
+    </sprites>
+    <sprites name="foliage">
+      <sprite>sprites\spr_grass1</sprite>
+      <sprite>sprites\spr_grass2</sprite>
+      <sprite>sprites\spr_tree1</sprite>
     </sprites>
   </sprites>
   <backgrounds name="background">
@@ -78,6 +89,12 @@
     <scripts name="Collisions">
       <script>scripts\scr_create_hurtbox.gml</script>
       <script>scripts\scr_create_hitbox.gml</script>
+    </scripts>
+    <scripts name="NPC scripts">
+      <script>scripts\scr_wander.gml</script>
+    </scripts>
+    <scripts name="effects">
+      <script>scripts\scr_shadow.gml</script>
     </scripts>
   </scripts>
   <objects name="objects">
@@ -100,8 +117,22 @@
     <objects name="NPCS">
       <object>objects\obj_chicken</object>
     </objects>
+    <objects name="buildings">
+      <object>objects\obj_farm_barn</object>
+    </objects>
+    <objects name="Foliage">
+      <object>objects\obj_grass1</object>
+      <object>objects\obj_grass2</object>
+      <object>objects\obj_haystack</object>
+      <object>objects\obj_tree1</object>
+    </objects>
+    <objects name="furniture">
+      <object>objects\obj_crate1</object>
+      <object>objects\obj_barrel1</object>
+    </objects>
   </objects>
   <rooms name="rooms">
+    <room>rooms\farm</room>
     <room>rooms\testRoom</room>
   </rooms>
   <help>

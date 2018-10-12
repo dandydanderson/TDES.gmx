@@ -40,6 +40,12 @@
       <sprite>sprites\spr_orc_walk_right</sprite>
       <sprite>sprites\spr_orc_walk_up</sprite>
       <sprite>sprites\spr_orc_walk_down</sprite>
+      <sprites name="attack">
+        <sprite>sprites\spr_orc_attack_up</sprite>
+        <sprite>sprites\spr_orc_attack_right</sprite>
+        <sprite>sprites\spr_orc_attack_down</sprite>
+        <sprite>sprites\spr_orc_attack_left</sprite>
+      </sprites>
     </sprites>
     <sprites name="hitboxes">
       <sprite>sprites\spr_sword_hb_up</sprite>
@@ -72,7 +78,10 @@
       <sprite>sprites\spr_grass1</sprite>
       <sprite>sprites\spr_grass2</sprite>
       <sprite>sprites\spr_tree1</sprite>
+      <sprite>sprites\spr_rock1</sprite>
+      <sprite>sprites\spr_rock2</sprite>
     </sprites>
+    <sprite>sprites\spr_shadow</sprite>
   </sprites>
   <backgrounds name="background">
     <background>background\testTileSet</background>
@@ -125,6 +134,8 @@
       <object>objects\obj_grass2</object>
       <object>objects\obj_haystack</object>
       <object>objects\obj_tree1</object>
+      <object>objects\obj_rock1</object>
+      <object>objects\obj_rock2</object>
     </objects>
     <objects name="furniture">
       <object>objects\obj_crate1</object>

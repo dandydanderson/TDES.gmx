@@ -130,7 +130,7 @@ if(hp &lt;1 and alive == true)
 
     }
     
-if (alive = false)
+if (alive == false)
     {
     if (image_index == 5)
         {

@@ -36,6 +36,9 @@ str = 5;
 intel = 5;
 agi = 5;
 
+hpmax = (str * 2) + floor(intel * 1.33) + floor(agi * 1.5);
+hp = hpmax;
+hppercent = 100;
 p = 0;
 speed = 0;
 startUpCounter = 0;
@@ -63,6 +66,10 @@ hurtbox = scr_create_hurtbox(26,48,-13,-20);
 
 //hitbox
 hitbox = -1;
+
+hit = false;
+hitStun = 0;
+hitBy = -1;
 </string>
           </argument>
         </arguments>
@@ -590,6 +597,7 @@ if(state == "target"){
 
 }
 
+//make sure the sprite is starting at the first sub image
     
 if (last_sprite != sprite_index) {
    image_index = 0;
@@ -686,6 +694,20 @@ if(!instance_exists(p1_target) and substate == "guard")
     substate = "idle";
 
     }
+    
+    
+    
+if (hit == true)
+{
+hp = hp - 5;
+hitStun = 2;
+hit = false;
+
+}
+
+//set health percentage
+
+hppercent = (hp/hpmax) * 100;
 
 </string>
           </argument>
@@ -1282,6 +1304,7 @@ if (keyboard_check(vk_down)) //need to have if statement for when key is release
             <kind>1</kind>
             <string>draw_sprite_ext(spr_shadow, 1, x, y+15, .6, .8, 0, c_black, 0.5);
 draw_self();
+draw_healthbar(x - 20, y - 40, x + 20, y - 35, hppercent, c_black, c_red, c_green, 0, true, true);
 </string>
           </argument>
         </arguments>

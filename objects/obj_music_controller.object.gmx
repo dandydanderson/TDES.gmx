@@ -50,16 +50,19 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if (ds_list_size(global.p1_enemies) &gt; 0 and audio_is_paused(mus_battle))
+            <string>if (ds_list_size(global.p1_enemies) &gt; 0 and audio_is_playing(mus_village_music))
     {
-     audio_pause_sound(mus_village_music);
+     audio_stop_sound(mus_village_music);
      audio_play_sound(mus_battle,1,true);
+     //audio_sound_gain(mus_battle,1,3000);
     }
     
-if(ds_list_empty(global.p1_enemies) and audio_is_paused(mus_battle))
+if(ds_list_empty(global.p1_enemies) and !audio_is_playing(mus_village_music))
     {
     audio_pause_sound(mus_battle);
-    audio_resume_sound(mus_village_music);
+    townMus = audio_play_sound(mus_village_music,1,true);
+     audio_sound_gain(townMus,0,0);
+    audio_sound_gain(townMus,1,3000);
     }
 </string>
           </argument>

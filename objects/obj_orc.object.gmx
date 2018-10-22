@@ -43,9 +43,9 @@ state = "peaceful";
 substate = "idle";
 animating = false;
 animatetimer= 0;
-
+last_sprite = 0;
 target = -1;
-
+attacktimer = 0;
 
 depth = -y;
 
@@ -103,13 +103,39 @@ if(hitbox != -1){
     with(hitbox){
         x = other.x + xOffset;
         y = other.y + yOffset;
+
+        //check to see if the hurtbox is touching your hitbox        
+        with(obj_hurtbox){
+            if(place_meeting(x,y,other) &amp;&amp; other.owner != owner){
+                //ignore check
+                //checking collision from the hitbox object
+                with(other){
+                    //check to see if your target is on the ignore list
+                    //if it is on the ignore list, dont hit it again
+                    for(i = 0; i &lt; ds_list_size(ignoreList); i ++){
+                        if(ignoreList[|i] = other.owner){
+                            ignore = true;
+                            break;
+                        }
+                    }
+
+                    //if it is NOT on the ignore list, hit it, and add it to
+                    //the ignore list
+                    if(!ignore){
+                        other.owner.hit = true;
+                        other.owner.hitBy = id;
+                        ds_list_add(ignoreList,other.owner);
+                    }
+                }
+            }
+        }
     }
 }
 
-if (hit = true)
+if (hit == true)
 {
 hp = hp - 3;
-hitStun = 5;
+hitStun = 2;
 hit = false;
 
 }
@@ -179,7 +205,33 @@ if(animatetimer &lt; 1)
     animating = false;
     }
 
+if (last_sprite != sprite_index) {
+   image_index = 0;
+   last_sprite = sprite_index;
+}
 
+if (substate == "attacking" &amp;&amp; image_index == 3)
+    {
+    hitbox = script_execute(scr_create_hitbox, dir, 10, 20, 60);
+    }
+    
+//change sprite from attacking sprite
+
+if(attacktimer &gt; 0 and substate == "attacking")
+    {
+    attacktimer = attacktimer - 1;
+    }
+    
+if (attacktimer &lt; 1 and substate == "attacking")
+    {
+    substate = "gaurd";
+    }
+    
+if(distance_to_object(Testp1) &lt;15)
+        {
+        x = xprevious;
+        y = yprevious;
+        }
 
 </string>
           </argument>
@@ -205,30 +257,37 @@ if(animatetimer &lt; 1)
             <kind>1</kind>
             <string>target_x = Testp1.x;
 target_y = Testp1.y;
+if(alive){
+if ( state == "aggro") 
+    {
+    direction = point_direction(x, y, target_x, target_y);
+    }
 
-if ( state == "aggro") {direction = point_direction(x, y, target_x, target_y);}
 
 
-
-if (alive == true and !animating)
+if (substate != "attacking")
     {
      if (direction &gt; 315 or direction &lt;= 45)
         {
+        dir = "right";
         sprite_index  = spr_orc_walk_right;
         }
         
     if (direction &gt; 45 and direction &lt;= 135)
         {
+        dir = "up";
         sprite_index = spr_orc_walk_up;
         }
         
     if (direction &gt; 135 and direction &lt;= 225)
         {
+        dir = "left";
         sprite_index = spr_orc_walk_left;
         }
         
     if (direction &gt; 225 and direction &lt;= 315)
         {
+        dir = "down";
         sprite_index = spr_orc_walk_down;
         }
     
@@ -238,23 +297,30 @@ if (hitStun == 0 and !animating ){
     if( distance_to_object(Testp1) &gt; 10 and state == "aggro"){
     speed = 1;
 
-}}
+    }
+
+    
+    
+    }
     
         }
         
 for(i = 0; i &lt;ds_list_size(global.player_units);i++)
     
-    if (distance_to_object(ds_list_find_value(global.player_units,i))&lt;20 and !animating)
+    if (distance_to_object(ds_list_find_value(global.player_units,i))&lt;30 and !animating)
     
     {
-        speed = 6;
+        speed = 7;
         animating = true;
         animatetimer= irandom_range(30,180);
         sprite_index = spr_orc_attack_down;
+        image_speed = .25;
+        substate = "attacking";
+        attacktimer = 24;
         
         
     }
-    
+}    
     
     if(speed &gt; 1) {speed = speed -1;}
 </string>

@@ -55,6 +55,7 @@ draw_text(10, 55, "Animating?: " + Testp1.animation);
 draw_text(10, 70, string(Testp1.startUpCounter));
 draw_text(10, 90, "Angle to enemy: " + string(Testp1.p1TargetDir));
 draw_text(10, 110, "Direction to enemy: " + Testp1.targetFace);
+draw_text(10, 150, string(Testp1.hp));
 
 if(instance_exists(obj_orc))
     {

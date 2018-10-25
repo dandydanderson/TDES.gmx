@@ -70,6 +70,7 @@ hitbox = -1;
 hit = false;
 hitStun = 0;
 hitBy = -1;
+
 </string>
           </argument>
         </arguments>
@@ -1267,7 +1268,10 @@ if (keyboard_check(vk_down)) //need to have if statement for when key is release
     }
   }
 
+ //Display inventory 
  
+
+
 
  
  

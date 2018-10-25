@@ -85,6 +85,12 @@
       <sprite>sprites\spr_rock2</sprite>
     </sprites>
     <sprite>sprites\spr_shadow</sprite>
+    <sprite>sprites\sprite50</sprite>
+    <sprites name="InventoryItems">
+      <sprite>sprites\spr_healing_potion</sprite>
+      <sprite>sprites\spr_mana_potion</sprite>
+      <sprite>sprites\inv_background</sprite>
+    </sprites>
   </sprites>
   <backgrounds name="background">
     <background>background\testTileSet</background>
@@ -108,24 +114,19 @@
     <scripts name="effects">
       <script>scripts\scr_shadow.gml</script>
     </scripts>
+    <scripts name="Inventory">
+      <script>scripts\scr_add_item.gml</script>
+    </scripts>
   </scripts>
   <objects name="objects">
-    <object>objects\player_unit_controller</object>
-    <object>objects\p1_target</object>
-    <object>objects\obj_invisWall</object>
     <objects name="TestPlayers">
       <object>objects\Testp1</object>
+      <object>objects\p1_target</object>
     </objects>
-    <object>objects\debugInfo</object>
-    <object>objects\obj_orc</object>
-    <object>objects\obj_enemy</object>
-    <object>objects\obj_sword_hb</object>
     <objects name="Collisions">
       <object>objects\obj_hurtbox</object>
       <object>objects\obj_hitbox</object>
     </objects>
-    <object>objects\obj_Hobbs</object>
-    <object>objects\obj_door</object>
     <objects name="NPCS">
       <object>objects\obj_chicken</object>
     </objects>
@@ -143,8 +144,26 @@
     <objects name="furniture">
       <object>objects\obj_crate1</object>
       <object>objects\obj_barrel1</object>
+      <object>objects\obj_door</object>
     </objects>
-    <object>objects\obj_music_controller</object>
+    <objects name="InventoryItems">
+      <object>objects\obj_pickup</object>
+    </objects>
+    <objects name="controllers">
+      <object>objects\obj_music_controller</object>
+      <object>objects\obj_inventory</object>
+      <object>objects\debugInfo</object>
+      <object>objects\player_unit_controller</object>
+      <object>objects\obj_invisWall</object>
+      <object>objects\obj_inventory_GUI</object>
+    </objects>
+    <objects name="hostileNPCS">
+      <object>objects\obj_enemy</object>
+      <object>objects\obj_orc</object>
+    </objects>
+    <objects name="NPCS">
+      <object>objects\obj_Hobbs</object>
+    </objects>
   </objects>
   <rooms name="rooms">
     <room>rooms\farm</room>

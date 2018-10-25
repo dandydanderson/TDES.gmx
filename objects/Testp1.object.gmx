@@ -603,6 +603,8 @@ if (last_sprite != sprite_index) {
    image_index = 0;
    last_sprite = sprite_index;
 }
+//catch this ensures if they target after they throw an attack that the substate sets to gaurd
+if(substate == "idle" and state == "target") {substate = "guard";}
 
 /*-----------------------------------------------------------------------------------------------------
 

@@ -28,14 +28,17 @@
             <string>depth = -1000;
 textBorder = 22;
 myItems = playerInventory;
-myColor = c_black;
+myColorText = c_white;
+myColorBackground = make_color_rgb(0,112,255);
 isEmpty = false;
 emptyMessage = "Empty";
 
 globalvar itemSelected, scrolledAmount, inventoryEndAt;
 itemSelected = 0;
 scrolledAmount = 0;
-inventoryEndAt = min(ds_grid_height(myItems),floor((sprite_height - (textBorder * 3))/32));
+inventoryEndAt = min(ds_grid_height(myItems),floor((sprite_height - (textBorder * 2))/32));
+
+
 inventoryOnScreen = 0;
 if(ds_grid_get(myItems, 0, 0) == 0) 
     {
@@ -43,6 +46,63 @@ if(ds_grid_get(myItems, 0, 0) == 0)
     isEmpty = true;
     
     }
+
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="8" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>//Draw the inventory
+
+//draw_self();
+draw_set_color(myColorBackground);
+draw_set_alpha(.8);
+sprite_index = draw_roundrect(x, y, x + 338, y + 222, 0);
+draw_set_alpha(1);
+
+draw_set_color(myColorText);
+draw_roundrect(x, y, x + 338, y + 222, 1);
+mask_index = sprite_index;
+draw_line(bbox_left + textBorder, bbox_top + textBorder + 14, x + 338 - textBorder, bbox_top + textBorder + 15);
+
+
+
+draw_text(bbox_left + textBorder, bbox_top + textBorder, "Image");
+draw_text(bbox_left + 125, bbox_top + textBorder, "Name");
+draw_text(bbox_left + 225, bbox_top + textBorder, "Amount");
+
+itemLeftStart = bbox_left + 120;
+itemTopStart = bbox_top + 48;
+
+for (i = 0; i &lt; inventoryEndAt; i = i + 1) 
+    {
+    draw_text_transformed(itemLeftStart, itemTopStart + (i * 32), ds_grid_get(myItems, 0, i),.7, .7,0);
+    draw_sprite(ds_grid_get(myItems, 3, i), 0, itemLeftStart - 80, itemTopStart + (i * 32) +10);
+    draw_text_transformed(itemLeftStart + 160, itemTopStart + (i * 32), ds_grid_get(myItems, 1, i), .8, .8, 0);
+    
+    }
+draw_set_alpha(.1);    
+draw_roundrect(bbox_left + textBorder, itemTopStart + (itemSelected * 32) - 8, x + 338 - textBorder, itemTopStart + (itemSelected * 32) + 24, 0);
+draw_set_alpha(1);   
+
+
 
 </string>
           </argument>

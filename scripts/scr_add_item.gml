@@ -17,7 +17,7 @@ newItemScript = argument5;
 
 //Check if the item already exists, and if it does increase quantity by proper amount
 
-for(i = 0; i < ds_grid_height(gridToAddTo); i++)
+for(i = 0; i < ds_grid_height(gridToAddTo); i = i + 1;)
     {
     if(ds_grid_get(gridToAddTo, 0, i) == newItemName) 
         {
@@ -28,10 +28,11 @@ for(i = 0; i < ds_grid_height(gridToAddTo); i++)
    
 //This will check for an empty inventory, increase size, and add item 
     
-if(ds_grid_get(gridToAddTo, 0, 0) !=0){
+if(ds_grid_get(gridToAddTo, 0, 0) != 0)
     
+    {
     ds_grid_resize(gridToAddTo, playerInventoryWidth, ds_grid_height(gridToAddTo) + 1);
-    
+    }
     
 newItemSpot = ds_grid_height(gridToAddTo) - 1;
 ds_grid_set(gridToAddTo, 0, newItemSpot, newItemName);
@@ -40,4 +41,4 @@ ds_grid_set(gridToAddTo, 2, newItemSpot, newItemDescription);
 ds_grid_set(gridToAddTo, 3, newItemSpot, newItemSprite);
 ds_grid_set(gridToAddTo, 4, newItemSpot, newItemScript);
 return true;
-}
+

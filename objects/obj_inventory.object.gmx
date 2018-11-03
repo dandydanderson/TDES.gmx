@@ -29,6 +29,14 @@
 playerInventoryWidth = 5;
 playerInventory = ds_grid_create(playerInventoryWidth, 1);
 
+scr_add_item(playerInventory, "Barrel", 1, "Very wooden and barrely noticable", spr_invTest2, "");
+scr_add_item(playerInventory, "Crate", 1, "How square, how quare", spr_invTest1, "");
+scr_add_item(playerInventory, "Barrel No. 2", 2, "Very wooden and barrely noticable", spr_invTest2, "");
+
+
+
+
+
 </string>
           </argument>
         </arguments>
@@ -56,8 +64,10 @@ playerInventory = ds_grid_create(playerInventoryWidth, 1);
     inventoryDisplay = instance_create(0, 0, obj_inventory_GUI);
     with(inventoryDisplay) 
         {
-        x = view_xview + sprite_get_xoffset(sprite_index) + 16;
-        y = view_yview + sprite_get_yoffset(sprite_index) + 16;
+       // x = view_xview + sprite_get_xoffset(sprite_index) + 16;
+        //y = view_yview + sprite_get_yoffset(sprite_index) + 16;
+        x = view_xview + 20;
+        y = view_yview + 20;
         }
     }
     

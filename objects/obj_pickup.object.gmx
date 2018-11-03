@@ -28,7 +28,7 @@
             <string>//Dynamic item object
 
 myItemName = undefined;
-myItemAmount = undefined;
+myItemAmount = 1;
 myItemDescription = undefined;
 myItemSprite = undefined;
 myItemScript = undefined;
@@ -55,11 +55,13 @@ myItemScript = undefined;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>//collision with player
+            <string>depth = -y + 30;
+
+//collision with player
 
  if(keyboard_check_pressed(ord('P')) and place_meeting(x,y, Testp1))
     {
-    scr_add_item(playerInventory, myItemName, myItemAmount, myItemDescription, myItemSprite, myItemScript)
+    scr_add_item(global.playerInventory, myItemName, myItemAmount, myItemDescription, myItemSprite, myItemScript);
     instance_destroy();
     }
 </string>

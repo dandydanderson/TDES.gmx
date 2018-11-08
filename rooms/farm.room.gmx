@@ -78,7 +78,7 @@
     <instance objName="obj_tree1" x="784" y="235" name="inst_5A9FB6E8" locked="0" code="" scaleX="0.200000002980232" scaleY="0.200000002980232" colour="4294967295" rotation="0"/>
     <instance objName="obj_tree1" x="256" y="160" name="inst_2E8FA118" locked="0" code="" scaleX="0.200000002980232" scaleY="0.200000002980232" colour="4294967295" rotation="0"/>
     <instance objName="obj_tree1" x="147" y="436" name="inst_64B7F4FD" locked="0" code="" scaleX="0.200000002980232" scaleY="0.200000002980232" colour="4294967295" rotation="0"/>
-    <instance objName="obj_tree1" x="900" y="556" name="inst_620446C9" locked="0" code="" scaleX="0.200000002980232" scaleY="0.200000002980232" colour="4294967295" rotation="0"/>
+    <instance objName="obj_tree1" x="922" y="582" name="inst_620446C9" locked="0" code="" scaleX="0.200000002980232" scaleY="0.200000002980232" colour="4294967295" rotation="0"/>
     <instance objName="obj_crate1" x="343" y="381" name="inst_58ECD5EF" locked="0" code="" scaleX="0.200000002980232" scaleY="0.200000002980232" colour="4294967295" rotation="0"/>
     <instance objName="obj_crate1" x="326" y="361" name="inst_8DA6EFD4" locked="0" code="" scaleX="0.200000002980232" scaleY="0.200000002980232" colour="4294967295" rotation="0"/>
     <instance objName="obj_barrel1" x="571" y="329" name="inst_85C5F631" locked="0" code="" scaleX="0.300000011920929" scaleY="0.300000011920929" colour="4294967295" rotation="0"/>
@@ -96,10 +96,46 @@
     <instance objName="obj_rock2" x="305" y="387" name="inst_5E9704B9" locked="0" code="" scaleX="0.100000001490116" scaleY="0.100000001490116" colour="4294967295" rotation="0"/>
     <instance objName="obj_music_controller" x="64" y="0" name="inst_C9BFF673" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_inventory" x="96" y="0" name="inst_6AF2D92D" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_pickup" x="160" y="256" name="inst_C6A5B002" locked="0" code="myItemName = &quot;Mana Potion&quot;;&#xA;myItemAmount = 1;&#xA;myItemDescription = undefined;&#xA;myItemSprite = spr_mana_potion;&#xA;myItemScript = undefined;&#xA;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_pickup" x="192" y="192" name="inst_2C32C816" locked="0" code="myItemName = &quot;Healing Potion&quot;&#xA;myItemAmount = 1;&#xA;myItemDescription = undefined;&#xA;myItemSprite = spr_healing_potion;&#xA;myItemScript = undefined;&#xA;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_pickup" x="224" y="192" name="inst_0EDB27D1" locked="0" code="myItemName = &quot;Healing Potion&quot;&#xA;myItemAmount = 1;&#xA;myItemDescription = undefined;&#xA;myItemSprite = spr_healing_potion;&#xA;myItemScript = undefined;&#xA;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_pickup" x="192" y="256" name="inst_1AC38DCF" locked="0" code="myItemName = &quot;Mana Potion&quot;;&#xA;myItemAmount = 1;&#xA;myItemDescription = undefined;&#xA;myItemSprite = spr_mana_potion;&#xA;myItemScript = undefined;&#xA;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_pickup" x="192" y="192" name="inst_2C32C816" locked="0" code="myItemName = &quot;Minor Healing Potion&quot;&#xA;myItemAmount = 1;&#xA;myItemDescription = &quot;Restores 1 health per second for 5 seconds&quot;;&#xA;myItemSprite = spr_healing_potion;&#xA;myItemScript = scr_minor_healing();" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_pickup" x="192" y="256" name="inst_1AC38DCF" locked="0" code="myItemName = &quot;Minor Mana Potion&quot;;&#xA;myItemAmount = 1;&#xA;myItemDescription = &quot;Restores 1 mana per second for 5 seconds&quot;;&#xA;myItemSprite = spr_mana_potion;&#xA;myItemScript = scr_no_effect();&#xA;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_tree1" x="852" y="620" name="inst_7DC5ECAD" locked="0" code="" scaleX="0.200000002980232" scaleY="0.200000002980232" colour="4294967295" rotation="0"/>
+    <instance objName="obj_tree1" x="824" y="685" name="inst_02DFC05F" locked="0" code="" scaleX="0.200000002980232" scaleY="0.200000002980232" colour="4294967295" rotation="0"/>
+    <instance objName="obj_tree1" x="749" y="718" name="inst_73793AAF" locked="0" code="" scaleX="0.200000002980232" scaleY="0.200000002980232" colour="4294967295" rotation="0"/>
+    <instance objName="obj_tree1" x="942" y="666" name="inst_A9A2DB74" locked="0" code="" scaleX="0.200000002980232" scaleY="0.200000002980232" colour="4294967295" rotation="0"/>
+    <instance objName="obj_tree1" x="882" y="746" name="inst_A754A42A" locked="0" code="" scaleX="0.200000002980232" scaleY="0.200000002980232" colour="4294967295" rotation="0"/>
+    <instance objName="obj_tree1" x="654" y="771" name="inst_9FBFE396" locked="0" code="" scaleX="0.200000002980232" scaleY="0.200000002980232" colour="4294967295" rotation="0"/>
+    <instance objName="obj_tree1" x="561" y="820" name="inst_028871C8" locked="0" code="" scaleX="0.200000002980232" scaleY="0.200000002980232" colour="4294967295" rotation="0"/>
+    <instance objName="obj_tree1" x="474" y="813" name="inst_937CABFE" locked="0" code="" scaleX="0.200000002980232" scaleY="0.200000002980232" colour="4294967295" rotation="0"/>
+    <instance objName="obj_tree1" x="401" y="787" name="inst_07CB2A05" locked="0" code="" scaleX="0.200000002980232" scaleY="0.200000002980232" colour="4294967295" rotation="0"/>
+    <instance objName="obj_tree1" x="346" y="827" name="inst_20ADB550" locked="0" code="" scaleX="0.200000002980232" scaleY="0.200000002980232" colour="4294967295" rotation="0"/>
+    <instance objName="obj_tree1" x="276" y="767" name="inst_7587EB5E" locked="0" code="" scaleX="0.200000002980232" scaleY="0.200000002980232" colour="4294967295" rotation="0"/>
+    <instance objName="obj_tree1" x="192" y="744" name="inst_A601E0E0" locked="0" code="" scaleX="0.200000002980232" scaleY="0.200000002980232" colour="4294967295" rotation="0"/>
+    <instance objName="obj_tree1" x="140" y="715" name="inst_9610AAB0" locked="0" code="" scaleX="0.200000002980232" scaleY="0.200000002980232" colour="4294967295" rotation="0"/>
+    <instance objName="obj_tree1" x="75" y="768" name="inst_61F699B0" locked="0" code="" scaleX="0.200000002980232" scaleY="0.200000002980232" colour="4294967295" rotation="0"/>
+    <instance objName="obj_tree1" x="17" y="714" name="inst_E3746B2A" locked="0" code="" scaleX="0.200000002980232" scaleY="0.200000002980232" colour="4294967295" rotation="0"/>
+    <instance objName="obj_tree1" x="4" y="589" name="inst_2D826FB5" locked="0" code="" scaleX="0.200000002980232" scaleY="0.200000002980232" colour="4294967295" rotation="0"/>
+    <instance objName="obj_tree1" x="497" y="617" name="inst_C39F6F4B" locked="0" code="" scaleX="0.200000002980232" scaleY="0.200000002980232" colour="4294967295" rotation="0"/>
+    <instance objName="obj_tree1" x="962" y="267" name="inst_70EF73E4" locked="0" code="" scaleX="0.200000002980232" scaleY="0.200000002980232" colour="4294967295" rotation="0"/>
+    <instance objName="obj_tree1" x="848" y="136" name="inst_ADB128D8" locked="0" code="" scaleX="0.200000002980232" scaleY="0.200000002980232" colour="4294967295" rotation="0"/>
+    <instance objName="obj_tree1" x="678" y="155" name="inst_8D053B98" locked="0" code="" scaleX="0.200000002980232" scaleY="0.200000002980232" colour="4294967295" rotation="0"/>
+    <instance objName="obj_tree1" x="552" y="110" name="inst_264BA612" locked="0" code="" scaleX="0.200000002980232" scaleY="0.200000002980232" colour="4294967295" rotation="0"/>
+    <instance objName="obj_tree1" x="416" y="107" name="inst_4CAAF6C0" locked="0" code="" scaleX="0.200000002980232" scaleY="0.200000002980232" colour="4294967295" rotation="0"/>
+    <instance objName="obj_tree1" x="479" y="84" name="inst_422A2EB6" locked="0" code="" scaleX="0.200000002980232" scaleY="0.200000002980232" colour="4294967295" rotation="0"/>
+    <instance objName="obj_tree1" x="24" y="238" name="inst_A4DD0C0B" locked="0" code="" scaleX="0.200000002980232" scaleY="0.200000002980232" colour="4294967295" rotation="0"/>
+    <instance objName="obj_grass1" x="318" y="456" name="inst_99005361" locked="0" code="" scaleX="0.100000001490116" scaleY="0.100000001490116" colour="4294967295" rotation="0"/>
+    <instance objName="obj_grass1" x="296" y="460" name="inst_4A90FC69" locked="0" code="" scaleX="0.100000001490116" scaleY="0.100000001490116" colour="4294967295" rotation="0"/>
+    <instance objName="obj_grass1" x="159" y="466" name="inst_8065F29D" locked="0" code="" scaleX="0.100000001490116" scaleY="0.100000001490116" colour="4294967295" rotation="0"/>
+    <instance objName="obj_grass1" x="132" y="461" name="inst_EBEAF343" locked="0" code="" scaleX="0.100000001490116" scaleY="0.100000001490116" colour="4294967295" rotation="0"/>
+    <instance objName="obj_grass1" x="269" y="188" name="inst_8FE1C3E5" locked="0" code="" scaleX="0.100000001490116" scaleY="0.100000001490116" colour="4294967295" rotation="0"/>
+    <instance objName="obj_grass1" x="523" y="98" name="inst_5E041E48" locked="0" code="" scaleX="0.100000001490116" scaleY="0.100000001490116" colour="4294967295" rotation="0"/>
+    <instance objName="obj_grass1" x="822" y="246" name="inst_F47E6324" locked="0" code="" scaleX="0.100000001490116" scaleY="0.100000001490116" colour="4294967295" rotation="0"/>
+    <instance objName="obj_grass1" x="587" y="575" name="inst_06F06FC0" locked="0" code="" scaleX="0.100000001490116" scaleY="0.100000001490116" colour="4294967295" rotation="0"/>
+    <instance objName="obj_grass2" x="680" y="194" name="inst_9B39A6C0" locked="0" code="" scaleX="0.100000001490116" scaleY="0.100000001490116" colour="4294967295" rotation="0"/>
+    <instance objName="obj_grass2" x="438" y="400" name="inst_1D08A91D" locked="0" code="" scaleX="0.100000001490116" scaleY="0.100000001490116" colour="4294967295" rotation="0"/>
+    <instance objName="obj_grass2" x="541" y="395" name="inst_E0FE18AA" locked="0" code="" scaleX="0.100000001490116" scaleY="0.100000001490116" colour="4294967295" rotation="0"/>
+    <instance objName="obj_grass2" x="163" y="552" name="inst_E5784FDD" locked="0" code="" scaleX="0.100000001490116" scaleY="0.100000001490116" colour="4294967295" rotation="0"/>
+    <instance objName="obj_grass2" x="70" y="381" name="inst_20EC1C32" locked="0" code="" scaleX="0.100000001490116" scaleY="0.100000001490116" colour="4294967295" rotation="0"/>
+    <instance objName="obj_pickup" x="224" y="288" name="inst_E4E186A6" locked="0" code="myItemName = &quot;Minor Mana Potion&quot;;&#xA;myItemAmount = 1;&#xA;myItemDescription = &quot;Restores 1 mana per second for 5 seconds&quot;;&#xA;myItemSprite = spr_mana_potion;&#xA;myItemScript = scr_no_effect();&#xA;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles/>
   <PhysicsWorld>0</PhysicsWorld>

@@ -29,10 +29,16 @@
 playerInventoryWidth = 5;
 playerInventory = ds_grid_create(playerInventoryWidth, 1);
 
-scr_add_item(playerInventory, "Barrel", 1, "Very wooden and barrely noticable", spr_invTest2, "");
+/*scr_add_item(playerInventory, "Barrel", 1, "Very wooden and barrely noticable", spr_invTest2, "");
 scr_add_item(playerInventory, "Crate", 1, "How square, how quare", spr_invTest1, "");
 scr_add_item(playerInventory, "Barrel No. 2", 2, "Very wooden and barrely noticable", spr_invTest2, "");
-
+scr_add_item(playerInventory, "Barrel3", 1, "Very wooden and barrely noticable", spr_invTest2, "");
+scr_add_item(playerInventory, "Crate2", 1, "How square, how quare", spr_invTest1, "");
+scr_add_item(playerInventory, "Barrel No. 4", 2, "Very wooden and barrely noticable", spr_invTest2, "");
+scr_add_item(playerInventory, "Barrel 8", 1, "Very wooden and barrely noticable", spr_invTest2, "");
+scr_add_item(playerInventory, "Crate3", 1, "How square, how quare", spr_invTest1, "");
+scr_add_item(playerInventory, "Barrel No. 5", 2, "Very wooden and barrely noticable", spr_invTest2, "");
+*/
 
 
 
@@ -75,6 +81,11 @@ else if(keyboard_check_pressed(ord('I')) and instance_exists(obj_inventory_GUI))
         {
             instance_destroy(inventoryDisplay);
         }
+        
+ if(keyboard_check_pressed(ord('U')) and instance_exists(obj_inventory_GUI)) 
+    {
+   script_execute(scr_item_use());
+    }
  
 </string>
           </argument>

@@ -31,7 +31,7 @@ myItems = playerInventory;
 myColorText = c_white;
 myColorBackground = make_color_rgb(0,112,255);
 isEmpty = false;
-emptyMessage = "Empty";
+emptyMessage = "Your inventory is empty.";
 
 globalvar itemSelected, scrolledAmount, inventoryEndAt;
 itemSelected = 0;
@@ -73,36 +73,59 @@ if(ds_grid_get(myItems, 0, 0) == 0)
 
 //draw_self();
 draw_set_color(myColorBackground);
-draw_set_alpha(.8);
+draw_set_alpha(.9);
 sprite_index = draw_roundrect(x, y, x + 338, y + 222, 0);
 draw_set_alpha(1);
 
 draw_set_color(myColorText);
 draw_roundrect(x, y, x + 338, y + 222, 1);
 mask_index = sprite_index;
-draw_line(bbox_left + textBorder, bbox_top + textBorder + 14, x + 338 - textBorder, bbox_top + textBorder + 15);
+draw_line(bbox_left + textBorder, bbox_top + textBorder + 25, x + 338 - textBorder, bbox_top + textBorder + 25);
 
 
-
+draw_set_font(fn_header);
 draw_text(bbox_left + textBorder, bbox_top + textBorder, "Image");
 draw_text(bbox_left + 125, bbox_top + textBorder, "Name");
 draw_text(bbox_left + 225, bbox_top + textBorder, "Amount");
 
+draw_set_font(fn_menu);
 itemLeftStart = bbox_left + 120;
-itemTopStart = bbox_top + 48;
+itemTopStart = bbox_top + 58;
 
 for (i = 0; i &lt; inventoryEndAt; i = i + 1) 
     {
-    draw_text_transformed(itemLeftStart, itemTopStart + (i * 32), ds_grid_get(myItems, 0, i),.7, .7,0);
-    draw_sprite(ds_grid_get(myItems, 3, i), 0, itemLeftStart - 80, itemTopStart + (i * 32) +10);
-    draw_text_transformed(itemLeftStart + 160, itemTopStart + (i * 32), ds_grid_get(myItems, 1, i), .8, .8, 0);
+    inventoryOnScreen = i;
+    draw_text_transformed(itemLeftStart, itemTopStart + (i * 32), ds_grid_get(myItems, 0, i + scrolledAmount),.7, .7,0);
+    draw_sprite(ds_grid_get(myItems, 3, i + scrolledAmount), 0, itemLeftStart - 80, itemTopStart + (i * 32) +10);
+    draw_text_transformed(itemLeftStart + 160, itemTopStart + (i * 32), ds_grid_get(myItems, 1, i + scrolledAmount), .8, .8, 0);
     
     }
 draw_set_alpha(.1);    
-draw_roundrect(bbox_left + textBorder, itemTopStart + (itemSelected * 32) - 8, x + 338 - textBorder, itemTopStart + (itemSelected * 32) + 24, 0);
+draw_roundrect(bbox_left + textBorder, itemTopStart + ((itemSelected - scrolledAmount) * 32) - 8, x + 338 - textBorder, itemTopStart + ((itemSelected - scrolledAmount) * 32) + 24, 0);
 draw_set_alpha(1);   
 
+if keyboard_check_pressed(vk_down) 
+    {
+    scr_scroll_down();
+    }
+if keyboard_check_pressed(vk_up)
+    {
+    scr_scroll_up();
+    }
+    
+    
+draw_set_color(myColorBackground);
+draw_set_alpha(.9);
+draw_roundrect(x + 350, y, x + 500, y + 150,0);
+draw_set_alpha(1);
+draw_set_color(myColorText);
+draw_roundrect(x + 350, y, x + 500, y + 150,1);
 
+draw_set_font(fn_description);
+if(isEmpty)
+    draw_text_ext(x + 350 + textBorder, y + textBorder, emptyMessage, 15, 150 - (2* textBorder));
+else
+    draw_text_ext(x + 350 + textBorder, y + textBorder, ds_grid_get(myItems, 2, itemSelected), 15, 150 - (2* textBorder));
 
 </string>
           </argument>

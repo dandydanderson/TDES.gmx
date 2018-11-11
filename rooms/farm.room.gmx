@@ -136,6 +136,8 @@
     <instance objName="obj_grass2" x="163" y="552" name="inst_E5784FDD" locked="0" code="" scaleX="0.100000001490116" scaleY="0.100000001490116" colour="4294967295" rotation="0"/>
     <instance objName="obj_grass2" x="70" y="381" name="inst_20EC1C32" locked="0" code="" scaleX="0.100000001490116" scaleY="0.100000001490116" colour="4294967295" rotation="0"/>
     <instance objName="obj_pickup" x="224" y="288" name="inst_E4E186A6" locked="0" code="myItemName = &quot;Minor Mana Potion&quot;;&#xA;myItemAmount = 1;&#xA;myItemDescription = &quot;Restores 1 mana per second for 5 seconds&quot;;&#xA;myItemSprite = spr_mana_potion;&#xA;myItemScript = scr_no_effect();&#xA;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_invisWall" x="485" y="339" name="inst_AA608E7A" locked="0" code="" scaleX="4.53000020980835" scaleY="3.41000008583069" colour="4294967295" rotation="0"/>
+    <instance objName="obj_invisWall" x="334" y="369" name="inst_DC41D8FE" locked="0" code="" scaleX="1.97000002861023" scaleY="1.80645155906677" colour="4294967295" rotation="0"/>
   </instances>
   <tiles/>
   <PhysicsWorld>0</PhysicsWorld>

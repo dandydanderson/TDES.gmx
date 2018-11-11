@@ -137,6 +137,7 @@
     <objects name="Collisions">
       <object>objects\obj_hurtbox</object>
       <object>objects\obj_hitbox</object>
+      <object>objects\obj_invisWall</object>
     </objects>
     <objects name="NPCS">
       <object>objects\obj_chicken</object>
@@ -165,7 +166,6 @@
       <object>objects\obj_inventory</object>
       <object>objects\debugInfo</object>
       <object>objects\player_unit_controller</object>
-      <object>objects\obj_invisWall</object>
       <object>objects\obj_inventory_GUI</object>
     </objects>
     <objects name="hostileNPCS">

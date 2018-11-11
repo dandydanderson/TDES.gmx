@@ -49,8 +49,8 @@ image_speed = 0;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>//draw_sprite_ext(sprite_index, 1, x + 50, y, .2, .2, 0, c_black, 0.5);
-draw_sprite_ext(spr_shadow, 1, x, y, 2, 2, 0, c_black, 0.2);
+            <string>draw_sprite_ext(sprite_index, 1, x + 50, y, .2, .2, 0, c_black, 0.5);
+//draw_sprite_ext(spr_shadow, 1, x - 2, y - 21, 2, 2, 0, c_black, 0.1);
 draw_self();
 </string>
           </argument>

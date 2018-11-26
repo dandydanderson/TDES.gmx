@@ -122,6 +122,7 @@
       <script>scripts\scr_item_use.gml</script>
       <script>scripts\scr_minor_healing.gml</script>
       <script>scripts\scr_no_effect.gml</script>
+      <script>scripts\scr_trash_item.gml</script>
     </scripts>
   </scripts>
   <fonts name="fonts">

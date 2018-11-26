@@ -82,9 +82,11 @@ else if(keyboard_check_pressed(ord('I')) and instance_exists(obj_inventory_GUI))
             instance_destroy(inventoryDisplay);
         }
         
- if(keyboard_check_pressed(ord('U')) and instance_exists(obj_inventory_GUI)) 
+if(keyboard_check_pressed(ord('H')) and instance_exists(obj_inventory_GUI)) 
     {
-   script_execute(scr_item_use());
+      script_execute(ds_grid_get(playerInventory, 4, itemSelected));
+      scr_trash_item();
+
     }
  
 </string>

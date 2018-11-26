@@ -712,6 +712,9 @@ hit = false;
 
 hppercent = (hp/hpmax) * 100;
 
+
+
+
 </string>
           </argument>
         </arguments>
@@ -1271,7 +1274,7 @@ if (keyboard_check(vk_down)) //need to have if statement for when key is release
  //Display inventory 
  
 
-
+//test
 
  
  

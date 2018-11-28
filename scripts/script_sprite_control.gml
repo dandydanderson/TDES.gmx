@@ -136,6 +136,7 @@ animation = argument5;
 
 
 //sprite control on attack with no target
+//need to come back and reduce the size of this
 
 if(state == "notarget"){
 if(substate == "attack" && dir == "left")
@@ -158,7 +159,54 @@ if(substate == "attack" && dir == "up")
     sprite_index = spr_attack_up;
     image_speed = .25;
     }
+    
+    
+    if(substate == "parry"){
+    
+        switch(dir){
+            case "left":
+                sprite_index = spr_parry_left;
+            break;
+                
+            case "right":
+                sprite_index = spr_parry_right;
+            break;
+            
+            case "up":
+                sprite_index = spr_parry_top;
+            break;
+            
+            case "down":
+                sprite_index = spr_parry_down;
+            break;
+        }
+    
     }
+    
+    
+      if(substate == "block"){
+    
+        switch(dir){
+            case "left":
+                sprite_index = spr_block_left;
+            break;
+                
+            case "right":
+                sprite_index = spr_block_right;
+            break;
+            
+            case "up":
+                sprite_index = spr_block_top;
+            break;
+            
+            case "down":
+                sprite_index = spr_block_down;
+            break;
+        }
+    
+    }
+    
+}
 
     //sprite control on attack with a target
     
@@ -184,8 +232,101 @@ if(substate == "attack" && targetFace == "up")
     sprite_index = spr_attack_up;
     image_speed = .25;
     }
+    
+       if(substate == "parry"){
+    
+        switch(targetFace){
+            case "left":
+                sprite_index = spr_parry_left;
+            break;
+                
+            case "right":
+                sprite_index = spr_parry_right;
+            break;
+            
+            case "up":
+                sprite_index = spr_parry_top;
+            break;
+            
+            case "down":
+                sprite_index = spr_parry_down;
+            break;
+        }
+    
+    }
+    
+    
+      if(substate == "block"){
+    
+        switch(targetFace){
+            case "left":
+                sprite_index = spr_block_left;
+            break;
+                
+            case "right":
+                sprite_index = spr_block_right;
+            break;
+            
+            case "up":
+                sprite_index = spr_block_top;
+            break;
+            
+            case "down":
+                sprite_index = spr_block_down;
+            break;
+        }
+    
+    }
+    
+    
+    }
+    
+    
+//hit sprite control
+
+if(state == "notarget" and substate == "stun"){
+
+      switch(dir){
+            case "left":
+                sprite_index = spr_p1_hit_left;
+            break;
+                
+            case "right":
+                sprite_index = spr_p1_hit_right;
+            break;
+            
+            case "up":
+                sprite_index = spr_p1_hit_up;
+            break;
+            
+            case "down":
+                sprite_index = spr_p1_hit_down;
+            break;
+        }
+    
     }
 
+if(state == "target" and substate == "stun"){
+
+      switch(targetFace){
+            case "left":
+                sprite_index = spr_p1_hit_left;
+            break;
+                
+            case "right":
+                sprite_index = spr_p1_hit_right;
+            break;
+            
+            case "up":
+                sprite_index = spr_p1_hit_up;
+            break;
+            
+            case "down":
+                sprite_index = spr_p1_hit_down;
+            break;
+        }
+    
+    }
 
 
 

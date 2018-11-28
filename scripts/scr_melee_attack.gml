@@ -9,6 +9,14 @@ guardDir = argument5;
 FREE FORM ATTACKS
 
 -------------------------------------------*/
+
+//temp sword swing sound effect
+
+audio_play_sound(swordswing, 5, false);
+
+
+
+
 tempState = substate;
 if (state == "notarget" and dir = "left")
     {

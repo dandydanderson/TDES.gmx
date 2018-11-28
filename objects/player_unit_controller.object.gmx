@@ -54,6 +54,8 @@ instance_create(300, 300, Testp1);
             <string>if(keyboard_check_pressed(ord("O"))){
 
             instance_create(300, 200, obj_orc);
+             instance_create(200, 600, obj_orc);
+              instance_create(500, 500, obj_orc);
                   }
 </string>
           </argument>

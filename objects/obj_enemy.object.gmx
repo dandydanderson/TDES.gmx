@@ -47,13 +47,7 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>//If the enemy has a collision with the hitbox, take damage.
-
-if(place_meeting(x,y,obj_sword_hb))
-    {
-    hp = hp - 3;
-    }
-</string>
+            <string></string>
           </argument>
         </arguments>
       </action>

@@ -7,6 +7,10 @@
   <sounds name="sound">
     <sound>sound\mus_village_music</sound>
     <sound>sound\mus_battle</sound>
+    <sound>sound\swordswing</sound>
+    <sound>sound\swordhit</sound>
+    <sound>sound\block</sound>
+    <sound>sound\parry</sound>
   </sounds>
   <sprites name="sprites">
     <sprite>sprites\spr_invisWall</sprite>
@@ -31,6 +35,22 @@
           <sprite>sprites\spr_attack_up</sprite>
           <sprite>sprites\spr_attack_down</sprite>
         </sprites>
+        <sprites name="Defense">
+          <sprite>sprites\spr_block_right</sprite>
+          <sprite>sprites\spr_parry_right</sprite>
+          <sprite>sprites\spr_parry_left</sprite>
+          <sprite>sprites\spr_block_left</sprite>
+          <sprite>sprites\spr_block_down</sprite>
+          <sprite>sprites\spr_parry_down</sprite>
+          <sprite>sprites\spr_block_top</sprite>
+          <sprite>sprites\spr_parry_top</sprite>
+        </sprites>
+        <sprites name="hit">
+          <sprite>sprites\spr_p1_hit_down</sprite>
+          <sprite>sprites\spr_p1_hit_up</sprite>
+          <sprite>sprites\spr_p1_hit_left</sprite>
+          <sprite>sprites\spr_p1_hit_right</sprite>
+        </sprites>
       </sprites>
     </sprites>
     <sprites name="TestOrc">
@@ -48,6 +68,12 @@
         <sprite>sprites\spr_orc_attack_right</sprite>
         <sprite>sprites\spr_orc_attack_down</sprite>
         <sprite>sprites\spr_orc_attack_left</sprite>
+      </sprites>
+      <sprites name="HitOrc">
+        <sprite>sprites\spr_orc_hit_right</sprite>
+        <sprite>sprites\spr_orc_hit_left</sprite>
+        <sprite>sprites\spr_orc_hit_down</sprite>
+        <sprite>sprites\spr_orc_hit_up</sprite>
       </sprites>
     </sprites>
     <sprites name="hitboxes">
@@ -104,6 +130,9 @@
       <script>scripts\script_sprite_control.gml</script>
       <script>scripts\scr_start_movement.gml</script>
       <script>scripts\scr_melee_attack.gml</script>
+      <script>scripts\scr_parry.gml</script>
+      <script>scripts\scr_block.gml</script>
+      <script>scripts\scr_block_cancel.gml</script>
     </scripts>
     <scripts name="Collisions">
       <script>scripts\scr_create_hurtbox.gml</script>

@@ -128,6 +128,7 @@ if(hitbox != -1){
                         other.owner.hit = true;
                         other.owner.hitBy = id;
                         ds_list_add(ignoreList,other.owner);
+                    
                     }
                 }
             }
@@ -138,24 +139,60 @@ if(hitbox != -1){
 if (hit == true)
 {
 hp = hp - 3;
-hitStun = 2;
+hitStun = 10;
 hit = false;
+audio_play_sound(swordhit, 6, false);
+
 
 }
 
 if (hitStun &gt; 0)
 
 {
-speed = -1 * hitStun;
+substate = "stun";
 hitStun = hitStun - 1;
+
+//hitstun animation
+ if (direction &gt; 315 or direction &lt;= 45)
+        {
+        dir = "right";
+        sprite_index  = spr_orc_hit_right;
+        }
+        
+    if (direction &gt; 45 and direction &lt;= 135)
+        {
+        dir = "up";
+        sprite_index = spr_orc_hit_up;
+        }
+        
+    if (direction &gt; 135 and direction &lt;= 225)
+        {
+        dir = "left";
+        sprite_index = spr_orc_hit_left;
+        }
+        
+    if (direction &gt; 225 and direction &lt;= 315)
+        {
+        dir = "down";
+        sprite_index = spr_orc_hit_down;
+        }
+
+
+
+    if(hitStun == 0) {
+    
+        substate = "idle";
+    
+    }
 }
 
-if(hp &lt;1 and alive == true)
+if(hp &lt;1 and substate != "dead")
     {
     image_speed = .25;
     sprite_index = spr_orc_death;
     alive = false;
     speed = 0;
+    substate = "dead";
 
     }
     
@@ -213,7 +250,7 @@ if (last_sprite != sprite_index) {
    last_sprite = sprite_index;
 }
 
-if (substate == "attacking" &amp;&amp; image_index == 3)
+if (substate == "attacking" &amp;&amp; image_index == 4)
     {
     hitbox = script_execute(scr_create_hitbox, dir, 10, 20, 60);
     }
@@ -238,6 +275,9 @@ if(distance_to_object(Testp1) &lt;15)
         
     //set hp percentage    
 hppercent = (hp/hpmax) * 100;
+if (substate == "dead") {solid = false;}
+
+
 
 </string>
           </argument>
@@ -311,7 +351,7 @@ if (hitStun == 0 and !animating ){
     
         }
         
-for(i = 0; i &lt;ds_list_size(global.player_units);i++)
+for(i = 0; i &lt;ds_list_size(global.player_units);i++) {
     
     if (distance_to_object(ds_list_find_value(global.player_units,i))&lt;30 and !animating)
     
@@ -319,14 +359,38 @@ for(i = 0; i &lt;ds_list_size(global.player_units);i++)
         speed = 7;
         animating = true;
         animatetimer= irandom_range(30,180);
-        sprite_index = spr_orc_attack_down;
-        image_speed = .25;
+      
         substate = "attacking";
         attacktimer = 24;
+    
+     if (direction &gt; 315 or direction &lt;= 45)
+        {
+        sprite_index = spr_orc_attack_right;
+        image_speed = .25;
+        }
+        
+    if (direction &gt; 45 and direction &lt;= 135)
+        {
+         sprite_index = spr_orc_attack_up;
+        image_speed = .25;
+        }
+        
+    if (direction &gt; 135 and direction &lt;= 225)
+        {
+         sprite_index = spr_orc_attack_left;
+        image_speed = .25;
+        }
+        
+    if (direction &gt; 225 and direction &lt;= 315)
+        {
+         sprite_index = spr_orc_attack_down;
+        image_speed = .25;
+        }
         
         
-    }
-}    
+    } 
+}
+}   
     
     if(speed &gt; 1) {speed = speed -1;}
 </string>

@@ -53,6 +53,9 @@ guardDir = "middle";
 animationCounter = 0;
 tempState = "idle";
 
+parryCounter = 10;
+blockCounter = 20;
+
 last_sprite = 0;
 
 // target list from enemies that are active
@@ -70,6 +73,12 @@ hitbox = -1;
 hit = false;
 hitStun = 0;
 hitBy = -1;
+
+//alarm information
+/*
+alarm[0]= -1; //this is the parry alarm
+alarm[1] = -1 //this is the block alarm
+*/
 
 </string>
           </argument>
@@ -578,7 +587,9 @@ if(state == "notarget"){
     
     script_execute(scr_melee_attack, dir, state, substate, p1TargetDir, targetFace, guardDir);
     
+    
      p = 8;
+     scr_block_cancel();
 
     }
     }
@@ -587,7 +598,7 @@ if(state == "target"){
 
     if (keyboard_check_pressed(ord("A")) and animation = "false")
     {
-    
+     scr_block_cancel();
     script_execute(scr_melee_attack, dir, state, substate, p1TargetDir, targetFace, guardDir);
     
     if(distance_to_object(p1_target) &lt; 64) { p = 2 + sqrt(distance_to_object(p1_target));}
@@ -702,15 +713,106 @@ if(!instance_exists(p1_target) and substate == "guard")
     
 if (hit == true)
 {
-hp = hp - 5;
-hitStun = 2;
-hit = false;
+    if(substate == "parry")
+    {
+       hit = false; 
+      audio_play_sound(parry, 6, false);
+      animation = "false";
+      hitBy.owner.hitStun = 30;
+    }
+    
+    else if(substate == "block"){
+     hit = false; 
+      audio_play_sound(block, 6, false);
+       animation = "false";
+       hitBy.owner.hitStun = 15;
+    }
+    
+    
+    else{
+    
+    hp = hp - hitBy.owner.str;
+    hitStun = 10;
+    hit = false;
+    audio_play_sound(swordhit, 6, false);
+    }
 
 }
 
 //set health percentage
 
 hppercent = (hp/hpmax) * 100;
+
+
+//parry and block management
+
+if (substate == "parry") {
+    
+    if(parryCounter &gt; 0) {
+         parryCounter = parryCounter - 1;
+        }
+        
+    else { substate = "block"}
+    
+    }
+    
+if (substate == "block") {
+
+     if(blockCounter &gt; 0) {
+         blockCounter = blockCounter - 1;
+        }
+        
+    else { 
+    
+        switch(state) {
+        
+            case "notarget":
+                substate = "idle";
+                animation = "false";
+            break;   
+            
+            case "target":
+                substate = "guard"
+                animation = "false";
+            break; 
+        }
+        
+        parryCounter = 10;
+        blockCounter = 20;
+    
+    }
+
+
+}
+
+//hitstun
+
+if (hitStun &gt; 0) {
+
+    hitStun = hitStun - 1;
+    substate = "stun";
+    
+    if (hitStun == 0)
+    {
+        switch(state) {
+        
+        
+                case "notarget":
+                    substate = "idle";
+                    animation = "false";
+                break;
+                
+                case "target":
+                    substate = "guard";
+                    animation = "false";
+                break;
+            }
+}
+    
+    
+}
+    
+    
 
 
 
@@ -1271,10 +1373,36 @@ if (keyboard_check(vk_down)) //need to have if statement for when key is release
     }
   }
 
- //Display inventory 
  
+ 
+if (keyboard_check_pressed(ord("D")) &amp;&amp; !animation){
+ 
+ //switch statement for each possible main state, that is targeting or not targeting. There should be some overlapping actions that can be done in either.
+  switch(state)
+    {
+    
+    //notarget case
+    
+      case("notarget"):
+        {
+      
+        scr_parry();
+        }
+        
+        
+    //target case
+      case("target"):
+        {
+       
+        scr_parry();
+        
+        }   
+        
+        
+    }
+  }
 
-//test
+
 
  
  

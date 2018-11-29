@@ -25,7 +25,7 @@ if (state == "notarget" and dir = "left")
     animation = "true";
     
     //set timer to return animation to false
-    animationCounter = 30;
+    animationCounter = 22;
     
     //substate control for these conditions
     substate = "attack";
@@ -42,7 +42,7 @@ if (state == "notarget" and dir = "right")
     animation = "true";
     
     //set timer to return animation to false
-    animationCounter = 30;
+    animationCounter = 22;
     
     //substate control for 
     
@@ -57,7 +57,7 @@ if (state == "notarget" and dir = "up")
     animation = "true";
     
     //set timer to return animation to false
-    animationCounter = 30;
+    animationCounter = 22;
     
     //substate control for 
     substate = "attack";
@@ -71,7 +71,7 @@ if (state == "notarget" and dir = "down")
     animation = "true";
     
     //set timer to return animation to false
-    animationCounter = 30;
+    animationCounter = 22;
     
     //substate control for 
     substate = "attack";
@@ -91,7 +91,7 @@ if (state == "target")
     animation = "true";
     
     //set timer to return animation to false
-    animationCounter = 30;
+    animationCounter = 22;
     
     //substate control for these conditions
     substate = "attack";

@@ -6,6 +6,7 @@ dir = argument0;
 hitbox_ID.life = argument1;
 hitbox_ID.xHit = argument2;
 hitbox_ID.hitStun = argument3;
+hitbox_ID.damage = argument4;
 
 switch(dir){
 

@@ -138,27 +138,59 @@ animation = argument5;
 //sprite control on attack with no target
 //need to come back and reduce the size of this
 
+//--------------------
+    //Light Attack
+//--------------------
+
 if(state == "notarget"){
 if(substate == "attack" && dir == "left")
     {
     sprite_index = spr_attack_left;
-    image_speed = .25;
+     image_speed = 1;//the animation is 10 frames, so normally this would take only a 1/3 of a secon. I want light attacks 
+    //to create a hitbox at around 500 ms, so the entire animation will take ~660 ms, with the hitbox being created at the
+    // 6th frame (about 550 ms).
     }
 if(substate == "attack" && dir == "right")
     {
     sprite_index = spr_attack_right;
-    image_speed = .25;
+    image_speed = 1;
     }
 if(substate == "attack" && dir == "down")
     {
     sprite_index = spr_attack_down;
-    image_speed = .25;
+    image_speed = 1;
     }
 if(substate == "attack" && dir == "up")
     {
     sprite_index = spr_attack_up;
-    image_speed = .25;
+    image_speed = 1;
     }
+//--------------
+    //Heavy Attack
+//-------------------
+    
+if(state == "notarget"){
+if(substate == "heavyattack" && dir == "left")
+    {
+    sprite_index = spr_heavy_attack_left;
+    image_speed = .5;
+    }
+if(substate == "heavyattack" && dir == "right")
+    {
+    sprite_index = spr_heavy_attack_right;
+    image_speed = .5;
+    }
+if(substate == "heavyattack" && dir == "down")
+    {
+    sprite_index = spr_heavy_attack_down;
+    image_speed = .5;
+    }
+if(substate == "heavyattack" && dir == "up")
+    {
+    sprite_index = spr_heavy_attack_up;
+    image_speed = .5;
+    }
+}
     
     
     if(substate == "parry"){
@@ -209,30 +241,60 @@ if(substate == "attack" && dir == "up")
 }
 
     //sprite control on attack with a target
+    //------
+    //Light Attack Target
+    //----------------
     
 if(state == "target"){
 
 if(substate == "attack" && targetFace == "left")
     {
     sprite_index = spr_attack_left;
-    image_speed = .25;
+   image_speed = 1;
     }
 if(substate == "attack" && targetFace == "right")
     {
     sprite_index = spr_attack_right;
-    image_speed = .25;
+   image_speed = 1;
     }
 if(substate == "attack" && targetFace == "down")
     {
     sprite_index = spr_attack_down;
-    image_speed = .25;
+ image_speed = 1;
     }
 if(substate == "attack" && targetFace == "up")
     {
     sprite_index = spr_attack_up;
-    image_speed = .25;
+   image_speed = 1;
     }
+ 
+ //--------------
+    //Heavy Attack Target
+//-------------------
     
+if(state == "target"){
+if(substate == "heavyattack" && targetFace == "left")
+    {
+    sprite_index = spr_heavy_attack_left;
+    image_speed = .5;
+    }
+if(substate == "heavyattack" && targetFace == "right")
+    {
+    sprite_index = spr_heavy_attack_right;
+    image_speed = .5;
+    }
+if(substate == "heavyattack" && targetFace == "down")
+    {
+    sprite_index = spr_heavy_attack_down;
+    image_speed = .5;
+    }
+if(substate == "heavyattack" && targetFace == "up")
+    {
+    sprite_index = spr_heavy_attack_up;
+    image_speed = .5;
+    }
+}
+       
        if(substate == "parry"){
     
         switch(targetFace){
@@ -329,9 +391,99 @@ if(state == "target" and substate == "stun"){
     }
 
 
+// dodge sprite control 
 
+if(state == "notarget" and substate == "dodge"){
 
+      switch(dir){
+            case "left":
+                sprite_index = spr_dodge_left;
+            break;
+                
+            case "right":
+                sprite_index = spr_dodge_right;
+            break;
+            
+            case "up":
+                sprite_index = spr_dodge_up;
+            break;
+            
+            case "down":
+                sprite_index = spr_dodge_down;
+            break;
+        }
+    
+    }
 
+if(state == "target" and substate == "dodge"){
+
+      switch(targetFace){
+            case "left":
+                sprite_index = spr_dodge_left;
+            break;
+                
+            case "right":
+                sprite_index = spr_dodge_right;
+            break;
+            
+            case "up":
+                sprite_index = spr_dodge_up;
+            break;
+            
+            case "down":
+                sprite_index = spr_dodge_down;
+            break;
+        }
+    
+    }
+
+//----------------------
+//Grab
+//-----------------------------
+
+    if(substate == "grab"){
+    
+        switch(targetFace){
+            case "left":
+                sprite_index = spr_grab_left;
+            break;
+                
+            case "right":
+                sprite_index = spr_grab_right;
+            break;
+            
+            case "up":
+                sprite_index = spr_grab_up;
+            break;
+            
+            case "down":
+                sprite_index = spr_grab_down;
+            break;
+        }
+    
+    }
+    
+      if(substate == "grabbing"){
+    
+        switch(targetFace){
+            case "left":
+                sprite_index = spr_grab_left;
+            break;
+                
+            case "right":
+                sprite_index = spr_grab_right;
+            break;
+            
+            case "up":
+                sprite_index = spr_grab_up;
+            break;
+            
+            case "down":
+                sprite_index = spr_grab_down;
+            break;
+        }
+    
+    }
 
 
 

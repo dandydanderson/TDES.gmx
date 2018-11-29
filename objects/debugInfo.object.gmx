@@ -70,6 +70,11 @@ if(instance_exists(obj_inventory_GUI))
     }
     
 draw_text(10, 210, "Hit By: " + string(Testp1.hitBy));
+draw_text(10, 230, "Heavy Armor: " + string(Testp1.heavyArmor));
+
+if(instance_exists(p1_target)){
+    draw_text(10, 250, "AutoSwap: " + string(p1_target.autoSwap));
+    }
 </string>
           </argument>
         </arguments>

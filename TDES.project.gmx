@@ -11,6 +11,7 @@
     <sound>sound\swordhit</sound>
     <sound>sound\block</sound>
     <sound>sound\parry</sound>
+    <sound>sound\dodge</sound>
   </sounds>
   <sprites name="sprites">
     <sprite>sprites\spr_invisWall</sprite>
@@ -31,9 +32,13 @@
         <sprite>sprites\spr_p1_target</sprite>
         <sprites name="Melee">
           <sprite>sprites\spr_attack_right</sprite>
+          <sprite>sprites\spr_heavy_attack_right</sprite>
           <sprite>sprites\spr_attack_left</sprite>
+          <sprite>sprites\spr_heavy_attack_left</sprite>
           <sprite>sprites\spr_attack_up</sprite>
+          <sprite>sprites\spr_heavy_attack_up</sprite>
           <sprite>sprites\spr_attack_down</sprite>
+          <sprite>sprites\spr_heavy_attack_down</sprite>
         </sprites>
         <sprites name="Defense">
           <sprite>sprites\spr_block_right</sprite>
@@ -44,12 +49,22 @@
           <sprite>sprites\spr_parry_down</sprite>
           <sprite>sprites\spr_block_top</sprite>
           <sprite>sprites\spr_parry_top</sprite>
+          <sprite>sprites\spr_dodge_up</sprite>
+          <sprite>sprites\spr_dodge_down</sprite>
+          <sprite>sprites\spr_dodge_left</sprite>
+          <sprite>sprites\spr_dodge_right</sprite>
         </sprites>
         <sprites name="hit">
           <sprite>sprites\spr_p1_hit_down</sprite>
           <sprite>sprites\spr_p1_hit_up</sprite>
           <sprite>sprites\spr_p1_hit_left</sprite>
           <sprite>sprites\spr_p1_hit_right</sprite>
+        </sprites>
+        <sprites name="Grab/Bash">
+          <sprite>sprites\spr_grab_up</sprite>
+          <sprite>sprites\spr_grab_right</sprite>
+          <sprite>sprites\spr_grab_left</sprite>
+          <sprite>sprites\spr_grab_down</sprite>
         </sprites>
       </sprites>
     </sprites>
@@ -118,6 +133,23 @@
       <sprite>sprites\spr_invTest1</sprite>
       <sprite>sprites\spr_invTest2</sprite>
     </sprites>
+    <sprites name="TestSkeleton">
+      <sprite>sprites\spr_skeleton_idle_left</sprite>
+      <sprite>sprites\spr_skeleton_idle_up</sprite>
+      <sprite>sprites\spr_skeleton_idle_right</sprite>
+      <sprite>sprites\spr_skeleton_idle_down</sprite>
+      <sprite>sprites\spr_skeleton_death</sprite>
+      <sprite>sprites\spr_skeleton_walk_left</sprite>
+      <sprite>sprites\spr_skeleton_walk_right</sprite>
+      <sprite>sprites\spr_skeleton_walk_down</sprite>
+      <sprite>sprites\spr_skeleton_walk_up</sprite>
+      <sprites name="attack">
+        <sprite>sprites\spr_skeleton_attack_up</sprite>
+        <sprite>sprites\spr_skeleton_attack_right</sprite>
+        <sprite>sprites\spr_skeleton_attack_left</sprite>
+        <sprite>sprites\spr_skeleton_attack_down</sprite>
+      </sprites>
+    </sprites>
   </sprites>
   <backgrounds name="background">
     <background>background\testTileSet</background>
@@ -129,10 +161,13 @@
       <script>scripts\scr_strafe.gml</script>
       <script>scripts\script_sprite_control.gml</script>
       <script>scripts\scr_start_movement.gml</script>
-      <script>scripts\scr_melee_attack.gml</script>
+      <script>scripts\scr_melee_light_attack.gml</script>
+      <script>scripts\scr_melee_heavy_attack.gml</script>
       <script>scripts\scr_parry.gml</script>
       <script>scripts\scr_block.gml</script>
       <script>scripts\scr_block_cancel.gml</script>
+      <script>scripts\scr_dodge.gml</script>
+      <script>scripts\scr_grab.gml</script>
     </scripts>
     <scripts name="Collisions">
       <script>scripts\scr_create_hurtbox.gml</script>
@@ -201,6 +236,7 @@
     <objects name="hostileNPCS">
       <object>objects\obj_enemy</object>
       <object>objects\obj_orc</object>
+      <object>objects\obj_skeleton</object>
     </objects>
     <objects name="NPCS">
       <object>objects\obj_Hobbs</object>

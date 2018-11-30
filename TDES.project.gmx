@@ -12,6 +12,7 @@
     <sound>sound\block</sound>
     <sound>sound\parry</sound>
     <sound>sound\dodge</sound>
+    <sound>sound\wallSplat</sound>
   </sounds>
   <sprites name="sprites">
     <sprite>sprites\spr_invisWall</sprite>

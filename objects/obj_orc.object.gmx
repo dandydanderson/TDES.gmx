@@ -161,6 +161,10 @@ if (hitStun &gt; 0)
 {
 substate = "stun";
 hitStun = hitStun - 1;
+speed = 0;
+
+
+
 
 //hitstun animation
  if (direction &gt; 315 or direction &lt;= 45)
@@ -308,6 +312,24 @@ if(thrownRight){
     thrownCounter = thrownCounter - 1;
     
     if(thrownCounter == 0) {
+    
+    if(thrownUp and !place_free(x, y - 1)){
+     hitStun = hitStun + 60;
+     audio_play_sound(wallSplat, 6, 0);
+    }
+    if(thrownDown and !place_free(x, y + 1)){
+     hitStun = hitStun + 60;
+     audio_play_sound(wallSplat, 6, 0);
+    }
+    if(thrownLeft and !place_free(x - 1, y)){
+     hitStun = hitStun + 60;
+     audio_play_sound(wallSplat, 6, 0);
+    }
+    if(thrownRight and !place_free(x + 1, y)){
+     hitStun = hitStun + 60;
+     audio_play_sound(wallSplat, 6, 0);
+    }
+    
     thrownUp = false;
     thrownDown = false;
     thrownRight = false;
@@ -410,7 +432,7 @@ for(i = 0; i &lt;ds_list_size(global.player_units);i++) {
     {
         speed = 7;
         animating = true;
-        animatetimer= irandom_range(30,180);
+        animatetimer= irandom_range(30,60);
       
         substate = "attacking";
         attacktimer = 24;

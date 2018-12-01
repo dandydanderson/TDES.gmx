@@ -189,6 +189,9 @@
       <script>scripts\scr_no_effect.gml</script>
       <script>scripts\scr_trash_item.gml</script>
     </scripts>
+    <scripts name="Controls">
+      <script>scripts\scr_player_one_controls.gml</script>
+    </scripts>
   </scripts>
   <fonts name="fonts">
     <font>fonts\fn_description</font>
@@ -233,6 +236,7 @@
       <object>objects\debugInfo</object>
       <object>objects\player_unit_controller</object>
       <object>objects\obj_inventory_GUI</object>
+      <object>objects\obj_controller_controller</object>
     </objects>
     <objects name="hostileNPCS">
       <object>objects\obj_enemy</object>

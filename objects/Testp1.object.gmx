@@ -87,6 +87,7 @@ alarm[0]= -1; //this is the parry alarm
 alarm[1] = -1 //this is the block alarm
 */
 
+
 </string>
           </argument>
         </arguments>
@@ -186,7 +187,31 @@ startUpCounter = startUpCounter - 1;
  
  ----------------------------------------------------------------------------------------*/
  
- if (keyboard_check_released(vk_left)) //statements for what happens when you release a key
+ if (!up_held and !down_held and !left_held and !right_held and !animation){
+    
+    switch(state){
+        case "target":
+            substate = "guard";
+        break;
+        
+        case "notarget":
+            substate = "idle";
+        break;
+        }
+ 
+    }
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ /*
+ if (left_released) //statements for what happens when you release a key
  {
  //switch statement for each possible main state, that is targeting or not targeting. There should be some overlapping actions that can be done in either.
   switch(state)
@@ -284,7 +309,7 @@ startUpCounter = startUpCounter - 1;
     }
   }
     
-    if (keyboard_check_released(vk_up)) //need to have if statement for when key is released to return to "idle" substate for both target and no target modes.
+    if (up_released) //need to have if statement for when key is released to return to "idle" substate for both target and no target modes.
  {
  
  //switch statement for each possible main state, that is targeting or not targeting. There should be some overlapping actions that can be done in either.
@@ -383,7 +408,7 @@ startUpCounter = startUpCounter - 1;
     }
  }  
     
-  if (keyboard_check_released(vk_right)) //need to have if statement for when key is released to return to "idle" substate for both target and no target modes.
+  if (right_released) //need to have if statement for when key is released to return to "idle" substate for both target and no target modes.
  {
  
  //switch statement for each possible main state, that is targeting or not targeting. There should be some overlapping actions that can be done in either.
@@ -482,7 +507,7 @@ startUpCounter = startUpCounter - 1;
     }
   }  
  
-if (keyboard_check_released(vk_down)) //need to have if statement for when key is released to return to "idle" substate for both target and no target modes.
+if (down_released) //need to have if statement for when key is released to return to "idle" substate for both target and no target modes.
  {
  
  //switch statement for each possible main state, that is targeting or not targeting. There should be some overlapping actions that can be done in either.
@@ -580,7 +605,7 @@ if (keyboard_check_released(vk_down)) //need to have if statement for when key i
         
     }
   }
-  
+  */
   
   
    /* ------------------------------------------------------------------------------------------------------------------------
@@ -590,7 +615,7 @@ if (keyboard_check_released(vk_down)) //need to have if statement for when key i
  --------------------------------------------------------------------------------------------------------------------------*/
 if(state == "notarget"){
  
- if (keyboard_check_pressed(ord("A")) and animation = "false")
+ if (r1_pressed and animation = "false")
     {
     
     script_execute(scr_melee_light_attack, dir, state, substate, p1TargetDir, targetFace, guardDir);
@@ -603,7 +628,7 @@ if(state == "notarget"){
     }
 if(state == "notarget"){
  
- if (keyboard_check_pressed(ord("F")) and animation = "false")
+ if (r2_pressed and animation = "false")
     {
     
     script_execute(scr_melee_heavy_attack, dir, state, substate, p1TargetDir, targetFace, guardDir);
@@ -616,7 +641,7 @@ if(state == "notarget"){
     }
 if(state == "target"){
 
-    if (keyboard_check_pressed(ord("A")) and animation = "false")
+    if (r1_pressed and animation = "false")
     {
      scr_block_cancel();
     script_execute(scr_melee_light_attack, dir, state, substate, p1TargetDir, targetFace, guardDir);
@@ -630,7 +655,7 @@ if(state == "target"){
 }
 if(state == "target"){
 
-    if (keyboard_check_pressed(ord("F")) and animation = "false")
+    if (r2_pressed and animation = "false")
     {
      scr_block_cancel();
     script_execute(scr_melee_heavy_attack, dir, state, substate, p1TargetDir, targetFace, guardDir);
@@ -976,14 +1001,14 @@ if (hitStun &gt; 0) {
 if(grabCounter &gt; 0){
     if(substate == "grab" and distance_to_object(p1_target) &lt; 60) {
 
-    x = x + ceil((p1_target.x - x)/20);
-    y = y + ceil((p1_target.y - y)/20);
+    x = x + ceil((p1_target.x - x)/16);
+    y = y + ceil((p1_target.y - y)/16);
  
     }
     
     grabCounter = grabCounter - 1;
     
-    if(grabCounter == 0 and substate == "grab" and distance_to_object(p1_target) &lt; 30){
+    if(grabCounter == 0 and substate == "grab" and distance_to_object(p1_target) &lt; 20){
      p1_target.target.hitStun = 30;
      substate = "grabbing";
      grabbingCounter = 30;
@@ -1011,7 +1036,7 @@ if(grabbingCounter &gt; 0 and substate == "grabbing"){
 //Throw out of grab
 
 if(substate == "grabbing"){
-    if(keyboard_check(vk_left) and keyboard_check(ord("G"))){
+    if(left_held and square_held){
     p1_target.target.thrownLeft = true;
     p1_target.target.thrownCounter = 20;
     p1_target.target.hitStun = 20;
@@ -1019,7 +1044,7 @@ if(substate == "grabbing"){
     animation = "false";
     }
     
-     if(keyboard_check(vk_right) and keyboard_check(ord("G"))){
+     if(right_held and square_held){
     p1_target.target.thrownRight = true;
     p1_target.target.thrownCounter = 20;
     p1_target.target.hitStun = 20;
@@ -1027,7 +1052,7 @@ if(substate == "grabbing"){
     animation = "false";
     }
     
-     if(keyboard_check(vk_up)and keyboard_check(ord("G"))){
+     if(up_held and square_held){
     p1_target.target.thrownUp = true;
     p1_target.target.thrownCounter = 20;
     p1_target.target.hitStun = 20;
@@ -1035,7 +1060,7 @@ if(substate == "grabbing"){
     animation = "false";
     }
     
-     if(keyboard_check(vk_down)and keyboard_check(ord("G"))){
+     if(down_held and square_held){
     p1_target.target.thrownDown = true;
     p1_target.target.thrownCounter = 20;
     p1_target.target.hitStun = 20;
@@ -1043,7 +1068,7 @@ if(substate == "grabbing"){
     animation = "false";
     }
   
-    if(keyboard_check(vk_left) and keyboard_check(vk_up) and keyboard_check(ord("G"))){
+    if(left_held and up_held and square_held){
     p1_target.target.thrownLeft = true;
     p1_target.target.thrownUp = true;
     p1_target.target.thrownCounter = 15;
@@ -1052,7 +1077,7 @@ if(substate == "grabbing"){
     animation = "false";
     }
     
-     if(keyboard_check(vk_right) and keyboard_check(vk_up) and keyboard_check(ord("G"))){
+     if(right_held and up_held and square_held){
     p1_target.target.thrownRight = true;
     p1_target.target.thrownUp = true;
     p1_target.target.thrownCounter = 15;
@@ -1061,7 +1086,7 @@ if(substate == "grabbing"){
     animation = "false";
     }
     
-  if(keyboard_check(vk_left)and keyboard_check(vk_down) and keyboard_check(ord("G"))){
+  if(left_held and down_held and square_held){
     p1_target.target.thrownLeft = true;
     p1_target.target.thrownDown = true;
     p1_target.target.thrownCounter = 15;
@@ -1070,7 +1095,7 @@ if(substate == "grabbing"){
     animation = "false";
     }
     
-     if(keyboard_check(vk_right) and keyboard_check(vk_down) and keyboard_check(ord("G"))){
+     if(right_held and down_held and square_held){
     p1_target.target.thrownRight = true;
     p1_target.target.thrownDown = true;
     p1_target.target.thrownCounter = 15;
@@ -1151,11 +1176,11 @@ Shoot/throw
 
 */
 depth = -y;
-
+script_execute(scr_player_one_controls);
 
 //Targeting script
  
-if (keyboard_check_pressed(vk_space) &amp;&amp; !instance_exists(p1_target) &amp;&amp; ds_list_size(global.p1_enemies)!= 0)
+if (l2_pressed &amp;&amp; !instance_exists(p1_target) &amp;&amp; ds_list_size(global.p1_enemies)!= 0)
     {
     instance_create(0,0,p1_target);
     substate = "guard";
@@ -1204,26 +1229,26 @@ script_execute(script_sprite_control, Testp1.state, Testp1.substate, Testp1.dir,
  
  //temporary startup animation for moving from idle.
  
- if (keyboard_check_pressed(vk_left) &amp;&amp; substate == "idle" &amp;&amp; state == "notarget" and !animation)
+ if (left_held &amp;&amp; substate == "idle" &amp;&amp; state == "notarget" and !animation)
  {
     substate = "startup";
       startUpCounter = 9;
     
  }
  
-  if (keyboard_check_pressed(vk_right) &amp;&amp; substate == "idle" &amp;&amp; state == "notarget" and !animation)
+  if (right_held &amp;&amp; substate == "idle" &amp;&amp; state == "notarget" and !animation)
  {
     substate = "startup";
       startUpCounter = 9;
  }
  
-  if (keyboard_check_pressed(vk_up) &amp;&amp; substate == "idle" &amp;&amp; state == "notarget" and !animation)
+  if (up_held &amp;&amp; substate == "idle" &amp;&amp; state == "notarget" and !animation)
  {
     substate = "startup";
     startUpCounter = 9;
  }
  
-  if (keyboard_check_pressed(vk_down) &amp;&amp; substate == "idle" &amp;&amp; state == "notarget" and !animation)
+  if (down_held &amp;&amp; substate == "idle" &amp;&amp; state == "notarget" and !animation)
  {
     substate = "startup";
     startUpCounter = 9;
@@ -1238,7 +1263,7 @@ script_execute(script_sprite_control, Testp1.state, Testp1.substate, Testp1.dir,
  ----------------------------------------------------------------------------------------*/
 
 
-if (keyboard_check(vk_left)) //need to have if statement for when key is released to return to "idle" substate for both target and no target modes.
+if (left_held) //need to have if statement for when key is released to return to "idle" substate for both target and no target modes.
  {
  
  //switch statement for each possible main state, that is targeting or not targeting. There should be some overlapping actions that can be done in either.
@@ -1342,7 +1367,7 @@ if (keyboard_check(vk_left)) //need to have if statement for when key is release
     }
   }
     
-if (keyboard_check(vk_up)) //need to have if statement for when key is released to return to "idle" substate for both target and no target modes.
+if (up_held) //need to have if statement for when key is released to return to "idle" substate for both target and no target modes.
  {
  
  //switch statement for each possible main state, that is targeting or not targeting. There should be some overlapping actions that can be done in either.
@@ -1447,7 +1472,7 @@ if (keyboard_check(vk_up)) //need to have if statement for when key is released 
     }
  }  
     
-  if (keyboard_check(vk_right)) //need to have if statement for when key is released to return to "idle" substate for both target and no target modes.
+  if (right_held) //need to have if statement for when key is released to return to "idle" substate for both target and no target modes.
  {
  
  //switch statement for each possible main state, that is targeting or not targeting. There should be some overlapping actions that can be done in either.
@@ -1551,7 +1576,7 @@ if (keyboard_check(vk_up)) //need to have if statement for when key is released 
     }
   }  
  
-if (keyboard_check(vk_down)) //need to have if statement for when key is released to return to "idle" substate for both target and no target modes.
+if (down_held) //need to have if statement for when key is released to return to "idle" substate for both target and no target modes.
  {
  
  //switch statement for each possible main state, that is targeting or not targeting. There should be some overlapping actions that can be done in either.
@@ -1657,7 +1682,7 @@ if (keyboard_check(vk_down)) //need to have if statement for when key is release
 
  
  
-if (keyboard_check_pressed(ord("D")) &amp;&amp; !animation){
+if (triangle_pressed &amp;&amp; !animation){
  
  //switch statement for each possible main state, that is targeting or not targeting. There should be some overlapping actions that can be done in either.
   switch(state)
@@ -1688,14 +1713,15 @@ if (keyboard_check_pressed(ord("D")) &amp;&amp; !animation){
 
 //dodge 
 
-if(keyboard_check_pressed(ord("S")) &amp;&amp; !animation){
+//if(keyboard_check_pressed(ord("S")) &amp;&amp; !animation){
 
+if(circle_pressed and !animation) {
 scr_dodge();
 }
 
 //grab
 
-if(keyboard_check_pressed(ord("G")) &amp;&amp; !animation &amp;&amp; state == "target") {
+if(square_pressed &amp;&amp; !animation &amp;&amp; state == "target") {
         scr_grab();
     }
 

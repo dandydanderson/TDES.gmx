@@ -28,6 +28,8 @@
             <string>depth = -1000
 
 global.player_units = ds_list_create();
+
+
 instance_create(300, 300, Testp1);
 </string>
           </argument>
@@ -64,6 +66,8 @@ if(keyboard_check_pressed(ord("L"))){
              instance_create(200, 400, obj_skeleton);
             
                   }
+                  
+
 </string>
           </argument>
         </arguments>

@@ -91,6 +91,7 @@ draw_text(10, 390, "Controller 0 connected?: " + string(gamepad_is_connected(0))
 draw_text(10, 410, "Player 1's Controller: " + obj_controller_controller.player_one_controller);
 draw_text(10, 430, "Player 2's Controller: " + obj_controller_controller.player_two_controller);
 draw_text(10, 450, "Controller Slot Number: " + string(p1_controller_num));
+draw_text(10, 470, "Animating Sub Image " + string(Testp1.animatingImage));
 
 </string>
           </argument>

@@ -1,5 +1,5 @@
 substate = "parry";
 animation = "true";
-parryCounter = 10;
-blockCounter = 20;
+parryCounter = 6;
+blockCounter = 12;
 

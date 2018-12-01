@@ -250,21 +250,27 @@ if(state == "target"){
 if(substate == "attack" && targetFace == "left")
     {
     sprite_index = spr_attack_left;
+    image_index = animatingImage;
    image_speed = 1;
     }
 if(substate == "attack" && targetFace == "right")
     {
     sprite_index = spr_attack_right;
+      image_index = animatingImage;
    image_speed = 1;
     }
 if(substate == "attack" && targetFace == "down")
     {
-    sprite_index = spr_attack_down;
- image_speed = 1;
+    if(sprite_index != spr_attack_down){
+         sprite_index = spr_attack_down;
+         image_index = animatingImage;
+        }
+    image_speed = 1;
     }
 if(substate == "attack" && targetFace == "up")
     {
     sprite_index = spr_attack_up;
+      image_index = animatingImage;
    image_speed = 1;
     }
  
@@ -275,23 +281,28 @@ if(substate == "attack" && targetFace == "up")
 if(state == "target"){
 if(substate == "heavyattack" && targetFace == "left")
     {
-    sprite_index = spr_heavy_attack_left;
+
+         sprite_index = spr_heavy_attack_left;
+       
     image_speed = .5;
     }
 if(substate == "heavyattack" && targetFace == "right")
     {
-    sprite_index = spr_heavy_attack_right;
+
+         sprite_index = spr_heavy_attack_right;
+      
     image_speed = .5;
     }
 if(substate == "heavyattack" && targetFace == "down")
     {
-    sprite_index = spr_heavy_attack_down;
+
+         sprite_index = spr_heavy_attack_down;     
     image_speed = .5;
     }
 if(substate == "heavyattack" && targetFace == "up")
     {
-    sprite_index = spr_heavy_attack_up;
-    image_speed = .5;
+         sprite_index = spr_heavy_attack_up;
+     image_speed = .5;
     }
 }
        

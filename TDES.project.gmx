@@ -31,6 +31,7 @@
           <sprite>sprites\spr_p1_rwalk</sprite>
         </sprites>
         <sprite>sprites\spr_p1_target</sprite>
+        <sprite>sprites\spr_p2_target</sprite>
         <sprites name="Melee">
           <sprite>sprites\spr_attack_right</sprite>
           <sprite>sprites\spr_heavy_attack_right</sprite>
@@ -191,6 +192,7 @@
     </scripts>
     <scripts name="Controls">
       <script>scripts\scr_player_one_controls.gml</script>
+      <script>scripts\scr_player_two_controls.gml</script>
     </scripts>
   </scripts>
   <fonts name="fonts">
@@ -201,7 +203,9 @@
   <objects name="objects">
     <objects name="TestPlayers">
       <object>objects\Testp1</object>
+      <object>objects\Testp2</object>
       <object>objects\p1_target</object>
+      <object>objects\p2_target</object>
     </objects>
     <objects name="Collisions">
       <object>objects\obj_hurtbox</object>
@@ -237,6 +241,7 @@
       <object>objects\player_unit_controller</object>
       <object>objects\obj_inventory_GUI</object>
       <object>objects\obj_controller_controller</object>
+      <object>objects\obj_camera_center</object>
     </objects>
     <objects name="hostileNPCS">
       <object>objects\obj_enemy</object>

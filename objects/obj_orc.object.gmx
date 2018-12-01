@@ -78,6 +78,10 @@ thrownCounter = 20;
 
 ds_list_add(global.p1_enemies, self);
 
+if(instance_exists(Testp2)){
+    ds_list_add(global.p2_enemies, self);
+    }
+
 
 
 

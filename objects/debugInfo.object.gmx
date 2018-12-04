@@ -93,6 +93,14 @@ draw_text(10, 430, "Player 2's Controller: " + obj_controller_controller.player_
 draw_text(10, 450, "Controller Slot Number: " + string(p1_controller_num));
 draw_text(10, 470, "Animating Sub Image " + string(Testp1.animatingImage));
 
+draw_text(10, 490, "View 0: " + string(view_visible[0]));
+draw_text(10, 510, "View 1: " + string(view_visible[1]));
+draw_text(10, 530, "View 2: " + string(view_visible[2]));
+draw_text(10, 550, "View 3: " + string(view_visible[3]));
+draw_text(10, 570, "View 4: " + string(view_visible[4]));
+draw_text(10, 590, "Camera Counter: " + string(obj_camera_center.camera_counter));
+
+
 </string>
           </argument>
         </arguments>

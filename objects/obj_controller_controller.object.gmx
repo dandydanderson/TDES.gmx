@@ -100,7 +100,7 @@ while(player_three_controller == "none"){
         }
 }
 
-while(player_two_controller == "none"){
+while(player_four_controller == "none"){
     for(i = 0; i &lt; 9; i++){
         if (gamepad_is_connected(i) and i != p1_controller_num and i != p2_controller_num and i != p3_controller_num){
             player_four_controller = gamepad_get_description(i);

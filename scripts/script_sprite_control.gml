@@ -249,14 +249,18 @@ if(state == "target"){
 
 if(substate == "attack" && targetFace == "left")
     {
+    if(sprite_index != spr_attack_left){
     sprite_index = spr_attack_left;
     image_index = animatingImage;
+    }
    image_speed = 1;
     }
 if(substate == "attack" && targetFace == "right")
     {
+    if(sprite_index != spr_attack_right){
     sprite_index = spr_attack_right;
       image_index = animatingImage;
+      }
    image_speed = 1;
     }
 if(substate == "attack" && targetFace == "down")
@@ -269,8 +273,10 @@ if(substate == "attack" && targetFace == "down")
     }
 if(substate == "attack" && targetFace == "up")
     {
+    if(sprite_index != spr_attack_up){
     sprite_index = spr_attack_up;
       image_index = animatingImage;
+      }
    image_speed = 1;
     }
  

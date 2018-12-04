@@ -8,6 +8,45 @@
   <parentName>&lt;undefined&gt;</parentName>
   <maskName>&lt;undefined&gt;</maskName>
   <events>
+    <event eventtype="0" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>
+camera_counter = 5;
+players_together = true;
+players = 1;
+furthest_player = 0;
+window_set_fullscreen(true);
+
+//reserve the 5th camera for the camera obj.
+
+view_visible[4] = true;
+view_object[4] = obj_camera_center;
+view_wview[4] = 800;
+view_hview[4] = 600;
+view_wport[4] = 1200;
+view_hport[4] = 800;
+
+
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
     <event eventtype="3" enumb="0">
       <action>
         <libid>1</libid>
@@ -25,15 +64,104 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if(instance_exists(Testp1) and instance_exists(Testp2)){
-    if (distance_to_object(Testp1) &gt; 200 || distance_to_object(Testp2) &gt; 200){
-        x = (Testp1.x + Testp2.x)/2;
-        y = (Testp1.y + Testp2.y)/2;
-        }
-    }
-    
-else{x = Testp1.x;
-     y = Testp1.y;}
+            <string>
+
+
+//Every 20 steps do update number of players in global.player_units)
+
+
+
+players = ds_list_size(global.player_units);
+
+//this switch statement keeps the camera object in between all the characters.
+
+switch (players) {
+
+case 1:
+x = Testp1.x;
+y = Testp1.y;
+break;
+
+case 2:
+x = (Testp1.x + Testp2.x)/2;
+y = (Testp1.y + Testp2.y)/2;
+break;
+
+case 3:
+x = (Testp1.x + Testp2.x + Testp3.x)/3;
+y = (Testp1.y + Testp2.y + Testp3.y)/3;
+break;
+
+case 4:
+x = (Testp1.x + Testp2.x + Testp3.x + Testp4.x)/4;
+y = (Testp1.y + Testp2.y + Testp3.y + Testp4.y)/4;
+break;
+
+}
+
+
+if(players_together == true){
+if(players == 1){
+    if(distance_to_object(Testp1) &gt; 300){
+        script_execute(scr_views);
+        players_together= false;}
+}
+if(players == 2){
+if(distance_to_object(Testp2) &gt; 300 || distance_to_object(Testp1) &gt; 300){
+        script_execute(scr_views);
+        players_together = false;}
+}
+if(players == 3){
+if(distance_to_object(Testp3) &gt; 300 || distance_to_object(Testp2) &gt; 300 || distance_to_object(Testp1)&gt; 300){
+        script_execute(scr_views);
+        players_together = false;}
+}
+if(players == 4){
+if(distance_to_object(Testp3) &gt; 300 || distance_to_object(Testp2) &gt; 300 || distance_to_object(Testp1)&gt; 300 || distance_to_object(Testp4) &gt; 300){
+        script_execute(scr_views);
+        players_together = false;}
+}
+}
+
+
+
+switch (players) {
+
+case 1:
+furthest_player = distance_to_object(Testp1);
+break;
+
+case 2:
+furthest_player = max(distance_to_object(Testp1), distance_to_object(Testp2));
+break;
+
+case 3:
+furthest_player = max(distance_to_object(Testp1), distance_to_object(Testp2), distance_to_object(Testp3));
+break;
+
+case 4:
+furthest_player = max(distance_to_object(Testp1), distance_to_object(Testp2), distance_to_object(Testp3), distance_to_object(Testp4));
+break;
+
+}
+
+if (furthest_player &lt; 300) {
+
+players_together = true;
+
+view_visible[0] = false;
+view_visible[1] = false;
+view_visible[2] = false;
+view_visible[3] = false;
+view_visible[4] = true;
+
+
+
+
+
+}
+
+
 </string>
           </argument>
         </arguments>

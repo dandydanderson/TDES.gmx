@@ -27,14 +27,15 @@
             <kind>1</kind>
             <string>//add player to global player unit list
 PVP = false;
+scr_views();
 
 
 ds_list_add(global.player_units, self);
 
 alive = true;
-str = 5;
-intel = 5;
-agi = 5;
+str = 7;
+intel = 4;
+agi = 4;
 
 hpmax = floor(str * 2) + floor(intel * 1.33) + floor(agi * 1.5);
 hp = hpmax;
@@ -1139,6 +1140,8 @@ if(substate == "lightattack"){
 if(animation == "false") {
     animatingImage = 0;
     }
+    
+    
 
 </string>
           </argument>
@@ -1745,21 +1748,43 @@ if(square_pressed &amp;&amp; !animation &amp;&amp; state == "target") {
  //PVP test
  
  if (keyboard_check_pressed(ord("Z"))){
-    if(instance_exists(Testp2) and PVP == false){
-    ds_list_add(global.p1_enemies,Testp2);
-    ds_list_add(global.p2_enemies, self);
+    if(PVP == false){
+    if(instance_exists(Testp2)){
+      ds_list_add(global.p1_enemies,Testp2);
+      ds_list_add(global.p2_enemies, self);
+        }
+    if(instance_exists(Testp3)){
+      ds_list_add(global.p1_enemies,Testp3);
+      ds_list_add(global.p2_enemies, Testp3);
+      ds_list_add(global.p3_enemies, self);
+      ds_list_add(global.p3_enemies, Testp2);
+      }
+     if(instance_exists(Testp4)){
+      ds_list_add(global.p1_enemies,Testp4);
+      ds_list_add(global.p2_enemies, Testp4);
+      ds_list_add(global.p3_enemies, Testp4);
+      ds_list_add(global.p4_enemies, self);
+      ds_list_add(global.p4_enemies, Testp2);
+      ds_list_add(global.p4_enemies, Testp3);
+      }
     PVP = true;
     }
     
+    
+    
+ 
+    
      
-    else{
+else{
 
     PVP = false;
-    ds_list_destroy(global.p1_enemies);
-    ds_list_destroy(global.p2_enemies);
-
+    ds_list_clear(global.p1_enemies);
+    ds_list_clear(global.p2_enemies);
+    ds_list_clear(global.p3_enemies);
+    ds_list_clear(global.p4_enemies);
     } 
-} 
+
+}
  
  
  
@@ -1790,7 +1815,9 @@ if(square_pressed &amp;&amp; !animation &amp;&amp; state == "target") {
             <kind>1</kind>
             <string>draw_sprite_ext(spr_shadow, 1, x, y+15, .6, .8, 0, c_black, 0.5);
 draw_self();
+image_blend = c_red;
 draw_healthbar(x - 20, y - 40, x + 20, y - 35, hppercent, c_black, c_red, c_green, 0, true, true);
+draw_text_ext_transformed(x - 20, y - 40, string(hp),  2, 300, .5, .5, 0); 
 </string>
           </argument>
         </arguments>

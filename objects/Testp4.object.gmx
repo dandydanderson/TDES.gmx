@@ -26,15 +26,15 @@
           <argument>
             <kind>1</kind>
             <string>//add player to global player unit list
-scr_views();
+
 
 
 ds_list_add(global.player_units, self);
 
 alive = true;
-str = 4;
-intel = 7;
-agi = 4;
+str = 5;
+intel = 5;
+agi = 5;
 
 hpmax = floor(str * 2) + floor(intel * 1.33) + floor(agi * 1.5);
 hp = hpmax;
@@ -47,7 +47,7 @@ state = "notarget";
 substate = "idle";
 animation = "false";
 depth = -y;
-p2TargetDir = 0;
+p4TargetDir = 0;
 targetFace = "up";
 guardDir = "middle";
 animationCounter = 0;
@@ -69,7 +69,7 @@ animatingImage = 0;
 
 // target list from enemies that are active
 
-global.p2_enemies = ds_list_create();
+global.p4_enemies = ds_list_create();
 
 //hitbox and hurtbox code
 
@@ -620,7 +620,7 @@ if(state == "notarget"){
  if (r1_pressed and animation = "false")
     {
     
-    script_execute(scr_melee_light_attack, dir, state, substate, p2TargetDir, targetFace, guardDir);
+    script_execute(scr_melee_light_attack, dir, state, substate, p4TargetDir, targetFace, guardDir);
     
     
      p = 8;
@@ -633,7 +633,7 @@ if(state == "notarget"){
  if (r2_pressed and animation = "false")
     {
     
-    script_execute(scr_melee_heavy_attack, dir, state, substate, p2TargetDir, targetFace, guardDir);
+    script_execute(scr_melee_heavy_attack, dir, state, substate, p4TargetDir, targetFace, guardDir);
     
     
      p = 8;
@@ -646,9 +646,9 @@ if(state == "target"){
     if (r1_pressed and animation = "false")
     {
      scr_block_cancel();
-    script_execute(scr_melee_light_attack, dir, state, substate, p2TargetDir, targetFace, guardDir);
+    script_execute(scr_melee_light_attack, dir, state, substate, p4TargetDir, targetFace, guardDir);
     
-    if(distance_to_object(p2_target) &lt; 64) { p = 2 + sqrt(distance_to_object(p2_target));}
+    if(distance_to_object(p4_target) &lt; 64) { p = 2 + sqrt(distance_to_object(p4_target));}
     
     else{ p = 8;}
 
@@ -660,9 +660,9 @@ if(state == "target"){
     if (r2_pressed and animation = "false")
     {
      scr_block_cancel();
-    script_execute(scr_melee_heavy_attack, dir, state, substate, p2TargetDir, targetFace, guardDir);
+    script_execute(scr_melee_heavy_attack, dir, state, substate, p4TargetDir, targetFace, guardDir);
     
-    if(distance_to_object(p2_target) &lt; 64) { p = 2 + sqrt(distance_to_object(p2_target));}
+    if(distance_to_object(p4_target) &lt; 64) { p = 2 + sqrt(distance_to_object(p4_target));}
     
     else{ p = 8;}
 
@@ -791,7 +791,7 @@ if (p &gt;0){
     
 if(state == "target"){
         if (p &gt;0){
-        direction = p2TargetDir;
+        direction = p4TargetDir;
         speed = p - 1;
         p=p-1;
     
@@ -804,7 +804,7 @@ if(p == 0) { speed = 0;}
 
 //check for target
 
-if(!instance_exists(p2_target) and substate == "guard")
+if(!instance_exists(p4_target) and substate == "guard")
     {
     state = "notarget";
     substate = "idle";
@@ -1001,17 +1001,17 @@ if (hitStun &gt; 0) {
 //-------------------
 
 if(grabCounter &gt; 0){
-    if(substate == "grab" and distance_to_object(p2_target) &lt; 60) {
+    if(substate == "grab" and distance_to_object(p4_target) &lt; 60) {
 
-    x = x + ceil((p2_target.x - x)/16);
-    y = y + ceil((p2_target.y - y)/16);
+    x = x + ceil((p4_target.x - x)/16);
+    y = y + ceil((p4_target.y - y)/16);
  
     }
     
     grabCounter = grabCounter - 1;
     
-    if(grabCounter == 0 and substate == "grab" and distance_to_object(p2_target) &lt; 20){
-     p2_target.target.hitStun = 30;
+    if(grabCounter == 0 and substate == "grab" and distance_to_object(p4_target) &lt; 20){
+     p4_target.target.hitStun = 30;
      substate = "grabbing";
      grabbingCounter = 30;
     
@@ -1039,69 +1039,69 @@ if(grabbingCounter &gt; 0 and substate == "grabbing"){
 
 if(substate == "grabbing"){
     if(left_held and square_held){
-    p2_target.target.thrownLeft = true;
-    p2_target.target.thrownCounter = 20;
-    p2_target.target.hitStun = 20;
+    p4_target.target.thrownLeft = true;
+    p4_target.target.thrownCounter = 20;
+    p4_target.target.hitStun = 20;
     substate = "guard";
     animation = "false";
     }
     
      if(right_held and square_held){
-    p2_target.target.thrownRight = true;
-    p2_target.target.thrownCounter = 20;
-    p2_target.target.hitStun = 20;
+    p4_target.target.thrownRight = true;
+    p4_target.target.thrownCounter = 20;
+    p4_target.target.hitStun = 20;
     substate = "guard";
     animation = "false";
     }
     
      if(up_held and square_held){
-    p2_target.target.thrownUp = true;
-    p2_target.target.thrownCounter = 20;
-    p2_target.target.hitStun = 20;
+    p4_target.target.thrownUp = true;
+    p4_target.target.thrownCounter = 20;
+    p4_target.target.hitStun = 20;
     substate = "guard";
     animation = "false";
     }
     
      if(down_held and square_held){
-    p2_target.target.thrownDown = true;
-    p2_target.target.thrownCounter = 20;
-    p2_target.target.hitStun = 20;
+    p4_target.target.thrownDown = true;
+    p4_target.target.thrownCounter = 20;
+    p4_target.target.hitStun = 20;
     substate = "guard";
     animation = "false";
     }
   
     if(left_held and up_held and square_held){
-    p2_target.target.thrownLeft = true;
-    p2_target.target.thrownUp = true;
-    p2_target.target.thrownCounter = 15;
-    p2_target.target.hitStun = 15;
+    p4_target.target.thrownLeft = true;
+    p4_target.target.thrownUp = true;
+    p4_target.target.thrownCounter = 15;
+    p4_target.target.hitStun = 15;
     substate = "guard";
     animation = "false";
     }
     
      if(right_held and up_held and square_held){
-    p2_target.target.thrownRight = true;
-    p2_target.target.thrownUp = true;
-    p2_target.target.thrownCounter = 15;
-    p2_target.target.hitStun = 15;
+    p4_target.target.thrownRight = true;
+    p4_target.target.thrownUp = true;
+    p4_target.target.thrownCounter = 15;
+    p4_target.target.hitStun = 15;
     substate = "guard";
     animation = "false";
     }
     
   if(left_held and down_held and square_held){
-    p2_target.target.thrownLeft = true;
-    p2_target.target.thrownDown = true;
-    p2_target.target.thrownCounter = 15;
-    p2_target.target.hitStun = 15;
+    p4_target.target.thrownLeft = true;
+    p4_target.target.thrownDown = true;
+    p4_target.target.thrownCounter = 15;
+    p4_target.target.hitStun = 15;
     substate = "guard";
     animation = "false";
     }
     
      if(right_held and down_held and square_held){
-    p2_target.target.thrownRight = true;
-    p2_target.target.thrownDown = true;
-    p2_target.target.thrownCounter = 15;
-    p2_target.target.hitStun = 15;
+    p4_target.target.thrownRight = true;
+    p4_target.target.thrownDown = true;
+    p4_target.target.thrownCounter = 15;
+    p4_target.target.hitStun = 15;
     substate = "guard";
     animation = "false";
     }
@@ -1190,46 +1190,46 @@ Shoot/throw
 
 */
 depth = -y;
-script_execute(scr_player_two_controls);
+script_execute(scr_player_four_controls);
 
 //Targeting script
  
-if (l2_pressed &amp;&amp; !instance_exists(p2_target) &amp;&amp; ds_list_size(global.p2_enemies)!= 0)
+if (l2_pressed &amp;&amp; !instance_exists(p4_target) &amp;&amp; ds_list_size(global.p4_enemies)!= 0)
     {
-    instance_create(0,0,p2_target);
+    instance_create(0,0,p4_target);
     substate = "guard";
     }
 
 //Sprite control script
 
-if (instance_exists(p2_target))
+if (instance_exists(p4_target))
     {
-    p2TargetDir = point_direction(x, y, p2_target.x, p2_target.y);
+    p4TargetDir = point_direction(x, y, p4_target.x, p4_target.y);
     }
 
 
-    if (p2TargetDir &gt; 315 or p2TargetDir &lt;= 45)
+    if (p4TargetDir &gt; 315 or p4TargetDir &lt;= 45)
         {
         targetFace = "right";
         }
         
-    if (p2TargetDir &gt; 45 and p2TargetDir &lt;= 135)
+    if (p4TargetDir &gt; 45 and p4TargetDir &lt;= 135)
         {
         targetFace = "up";
         }
         
-    if (p2TargetDir &gt; 135 and p2TargetDir &lt;= 225)
+    if (p4TargetDir &gt; 135 and p4TargetDir &lt;= 225)
         {
         targetFace = "left";
         }
         
-    if (p2TargetDir &gt; 225 and p2TargetDir &lt;= 315)
+    if (p4TargetDir &gt; 225 and p4TargetDir &lt;= 315)
         {
         targetFace = "down";
         }
     
 
-script_execute(script_sprite_control, Testp2.state, Testp2.substate, Testp2.dir, Testp2.p2TargetDir, Testp2.targetFace, animation);
+script_execute(script_sprite_control, Testp4.state, Testp4.substate, Testp4.dir, Testp4.p4TargetDir, Testp4.targetFace, animation);
 
 
 
@@ -1774,7 +1774,7 @@ if(square_pressed &amp;&amp; !animation &amp;&amp; state == "target") {
             <kind>1</kind>
             <string>draw_sprite_ext(spr_shadow, 1, x, y+15, .6, .8, 0, c_black, 0.5);
 draw_self();
-image_blend = c_blue;
+image_blend = c_green;
 draw_healthbar(x - 20, y - 40, x + 20, y - 35, hppercent, c_black, c_red, c_green, 0, true, true);
 draw_text_ext_transformed(x - 20, y - 40, string(hp),  2, 300, .5, .5, 0); 
 </string>

@@ -51,7 +51,7 @@
             <string>draw_text(10, 10, "Direction: " + Testp1.dir);
 draw_text(10, 25, "Current State: " + Testp1.state);
 draw_text(10, 40, "Current Substate: " + Testp1.substate);
-draw_text(10, 55, "Animating?: " + Testp1.animation);
+draw_text(10, 55, "Animating?: " + string(Testp1.animation));
 draw_text(10, 70, string(Testp1.startUpCounter));
 draw_text(10, 90, "Angle to enemy: " + string(Testp1.p1TargetDir));
 draw_text(10, 110, "Direction to enemy: " + Testp1.targetFace);

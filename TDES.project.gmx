@@ -13,6 +13,7 @@
     <sound>sound\parry</sound>
     <sound>sound\dodge</sound>
     <sound>sound\wallSplat</sound>
+    <sound>sound\cast</sound>
   </sounds>
   <sprites name="sprites">
     <sprite>sprites\spr_invisWall</sprite>
@@ -69,6 +70,12 @@
           <sprite>sprites\spr_grab_right</sprite>
           <sprite>sprites\spr_grab_left</sprite>
           <sprite>sprites\spr_grab_down</sprite>
+        </sprites>
+        <sprites name="Magic">
+          <sprite>sprites\spr_cast_right</sprite>
+          <sprite>sprites\spr_cast_up</sprite>
+          <sprite>sprites\spr_cast_left</sprite>
+          <sprite>sprites\spr_cast_down</sprite>
         </sprites>
       </sprites>
     </sprites>
@@ -154,6 +161,12 @@
         <sprite>sprites\spr_skeleton_attack_down</sprite>
       </sprites>
     </sprites>
+    <sprites name="Magic">
+      <sprite>sprites\spr_fireball_right</sprite>
+      <sprite>sprites\spr_fireball_up</sprite>
+      <sprite>sprites\spr_fireball_left</sprite>
+      <sprite>sprites\spr_fireball_down</sprite>
+    </sprites>
   </sprites>
   <backgrounds name="background">
     <background>background\testTileSet</background>
@@ -172,6 +185,8 @@
       <script>scripts\scr_block_cancel.gml</script>
       <script>scripts\scr_dodge.gml</script>
       <script>scripts\scr_grab.gml</script>
+      <script>scripts\scr_cast_fireball.gml</script>
+      <script>scripts\scr_cast.gml</script>
     </scripts>
     <scripts name="Collisions">
       <script>scripts\scr_create_hurtbox.gml</script>
@@ -262,6 +277,7 @@
     <objects name="NPCS">
       <object>objects\obj_Hobbs</object>
     </objects>
+    <object>objects\obj_fireball</object>
   </objects>
   <rooms name="rooms">
     <room>rooms\farm</room>

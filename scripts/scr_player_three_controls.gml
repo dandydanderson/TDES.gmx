@@ -15,19 +15,6 @@ else{up_held = false}
 if(v2axis > 0){down_held = true};
 else{down_held = false}
 
-//temp directional controls so I don't look like a nerd at college whipping out a controller
-
-if(keyboard_check(ord("K"))){right_held = true};
-else{right_held = false}
-
-if(keyboard_check(ord("H"))){left_held = true};
-else{left_held = false}
-
-if(keyboard_check(ord("U"))){up_held = true};
-else{up_held = false}
-
-if(keyboard_check(ord("J"))){down_held = true};
-else{down_held = false}
 
 
 

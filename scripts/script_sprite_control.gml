@@ -503,9 +503,66 @@ if(state == "target" and substate == "dodge"){
     }
 
 
+//--------------------
+    //Cast no Target
+//--------------------
 
+if(state == "notarget"){
+if(substate == "cast" && dir == "left")
+    {
+    sprite_index = spr_cast_left;
+    }
+if(substate == "cast" && dir == "right")
+    {
+    sprite_index = spr_cast_right;
+  
+    }
+if(substate == "cast" && dir == "down")
+    {
+    sprite_index = spr_cast_down;
 
+    }
+if(substate == "cast" && dir == "up")
+    {
+    sprite_index = spr_cast_up;
+   
+    }
 
+}
 
+    //------
+    //Cast with  Target
+    //----------------
+    
+if(state == "target"){
 
+if(substate == "cast" && targetFace == "left")
+    {
+    if(sprite_index != spr_cast_left){
+    sprite_index = spr_cast_left;
+    image_index = animatingImage;
+    }
+    }
+if(substate == "cast" && targetFace == "right")
+    {
+    if(sprite_index != spr_cast_right){
+    sprite_index = spr_cast_right;
+      image_index = animatingImage;
+      }
+    }
+if(substate == "attack" && targetFace == "down")
+    {
+    if(sprite_index != spr_cast_down){
+         sprite_index = spr_cast_down;
+         image_index = animatingImage;
+        }
+    }
+if(substate == "attack" && targetFace == "up")
+    {
+    if(sprite_index != spr_cast_up){
+    sprite_index = spr_cast_up;
+      image_index = animatingImage;
+      }
+    }
+}
 

@@ -37,9 +37,20 @@ str = 7;
 intel = 4;
 agi = 4;
 
-hpmax = floor(str * 2) + floor(intel * 1.33) + floor(agi * 1.5);
+hpmax = floor(str * 2) + floor(intel * 1.5) + floor(agi * 1.8);
+energymax = floor(intel * 2) + floor(agi * 1.8) + floor(str * 1.5);
+
+energy = energymax;
 hp = hpmax;
 hppercent = 100;
+energypercent = 100;
+
+hpregen = floor(5000/((str * 2) + (intel * 1.5) + (agi * 1.8)));
+energyregen = floor(1000/((str * 2) + (intel * 1.5) + (agi * 1.8)));
+
+hp_regen_counter = 0;
+energy_regen_counter = 0;
+
 p = 0;
 speed = 0;
 startUpCounter = 0;
@@ -59,12 +70,14 @@ blockCounter = 20;
 dodgeCounter = 0;
 grabCounter = 10;
 grabbingCounter = 30;
+castCounter = -1;
 
 heavyArmor = 0;
 heavyArmorDelay = 0;
 
 last_sprite = 0;
 damagePending = 0;
+spell = 0;
 
 //This keeps track of subimage while animating
 
@@ -164,6 +177,15 @@ if(hitbox != -1){
 if (p &lt;= 0){
       p = 0;
     }
+    
+    
+//Cast Counter
+
+castCounter = castCounter - 1;
+
+if(castCounter == 0){scr_cast_fireball();}
+
+
 // animation counter:
 
 
@@ -620,7 +642,7 @@ if (down_released) //need to have if statement for when key is released to retur
  --------------------------------------------------------------------------------------------------------------------------*/
 if(state == "notarget"){
  
- if (r1_pressed and animation = "false")
+ if (r1_pressed and animation = "false" and energy &gt; 0)
     {
     
     script_execute(scr_melee_light_attack, dir, state, substate, p1TargetDir, targetFace, guardDir);
@@ -633,7 +655,7 @@ if(state == "notarget"){
     }
 if(state == "notarget"){
  
- if (r2_pressed and animation = "false")
+ if (r2_pressed and animation = "false" and energy &gt; 0)
     {
     
     script_execute(scr_melee_heavy_attack, dir, state, substate, p1TargetDir, targetFace, guardDir);
@@ -646,7 +668,7 @@ if(state == "notarget"){
     }
 if(state == "target"){
 
-    if (r1_pressed and animation = "false")
+    if (r1_pressed and animation = "false" and energy &gt; 0)
     {
      scr_block_cancel();
     script_execute(scr_melee_light_attack, dir, state, substate, p1TargetDir, targetFace, guardDir);
@@ -660,7 +682,7 @@ if(state == "target"){
 }
 if(state == "target"){
 
-    if (r2_pressed and animation = "false")
+    if (r2_pressed and animation = "false" and energy &gt; 0)
     {
      scr_block_cancel();
     script_execute(scr_melee_heavy_attack, dir, state, substate, p1TargetDir, targetFace, guardDir);
@@ -768,6 +790,34 @@ if(hitbox != -1){
 
 
 
+//-------
+//Cast hitbox/spell creation
+//-------------
+
+
+
+//no target
+
+
+/* if (state == "notarget"){
+if (substate == "cast" &amp;&amp; image_index == 7)
+    {
+    scr_cast_fireball();
+    }
+}
+
+//target
+
+if (state == "target") {
+if (substate == "cast" &amp;&amp; image_index == 7)
+    {
+   scr_cast_fireball();
+    }
+}
+*/
+
+
+
 //momentum
 if(state == "notarget"){
 if (p &gt;0){
@@ -862,6 +912,7 @@ if (hit == true)
 //set health percentage
 
 hppercent = (hp/hpmax) * 100;
+energypercent = (energy/energymax) * 100;
 
 
 //parry and block management
@@ -1003,7 +1054,7 @@ if (hitStun &gt; 0) {
 //Grabbing
 //-------------------
 
-if(grabCounter &gt; 0){
+if(grabCounter &gt; 0 and energy &gt; 0){
     if(substate == "grab" and distance_to_object(p1_target) &lt; 60) {
 
     x = x + ceil((p1_target.x - x)/16);
@@ -1137,11 +1188,41 @@ if(substate == "lightattack"){
     image_index = animatingImage;
     }
     
+if(substate == "cast"){
+    animatingImage = animatingImage + 1;
+    image_index = animatingImage/3;
+    }
+    
 if(animation == "false") {
     animatingImage = 0;
     }
     
+//pvp knockout timer
+
+if (hp &lt; 1) {
+    hitStun = 180;
+    hp = hpmax;
     
+    }    
+    
+    
+//Regeneration
+hp_regen_counter = hp_regen_counter + 1;
+energy_regen_counter = energy_regen_counter + 1;
+
+if(hp_regen_counter == hpregen){
+    hp = hp + 1;
+    hp_regen_counter = 0;
+    }
+ if(hp &gt; hpmax){hp = hpmax;}
+ 
+if(energy_regen_counter == energyregen) {
+    energy = energy + 1;
+    energy_regen_counter = 0;
+    }
+ if(energy &gt; energymax) {energy = energymax;}
+
+
 
 </string>
           </argument>
@@ -1701,7 +1782,7 @@ if (down_held) //need to have if statement for when key is released to return to
 
  
  
-if (triangle_pressed &amp;&amp; !animation){
+if (triangle_pressed &amp;&amp; !animation and energy &gt; 0){
  
  //switch statement for each possible main state, that is targeting or not targeting. There should be some overlapping actions that can be done in either.
   switch(state)
@@ -1734,17 +1815,27 @@ if (triangle_pressed &amp;&amp; !animation){
 
 //if(keyboard_check_pressed(ord("S")) &amp;&amp; !animation){
 
-if(circle_pressed and !animation) {
+if(circle_pressed and !animation and energy &gt; 0) {
 scr_dodge();
 }
 
 //grab
 
-if(square_pressed &amp;&amp; !animation &amp;&amp; state == "target") {
+if(square_pressed &amp;&amp; !animation &amp;&amp; state == "target" and !l1_held) {
         scr_grab();
     }
 
 
+    
+    
+//Casting
+
+if(l1_held and !animation and square_pressed){
+scr_cast();
+}
+    
+    
+    
  //PVP test
  
  if (keyboard_check_pressed(ord("Z"))){
@@ -1785,6 +1876,8 @@ else{
     } 
 
 }
+
+
  
  
  
@@ -1815,9 +1908,15 @@ else{
             <kind>1</kind>
             <string>draw_sprite_ext(spr_shadow, 1, x, y+15, .6, .8, 0, c_black, 0.5);
 draw_self();
-image_blend = c_red;
-draw_healthbar(x - 20, y - 40, x + 20, y - 35, hppercent, c_black, c_red, c_green, 0, true, true);
-draw_text_ext_transformed(x - 20, y - 40, string(hp),  2, 300, .5, .5, 0); 
+
+image_blend = make_colour_rgb(255, 145, 121);
+
+draw_set_color(c_black)
+draw_healthbar(x - 20, y - 50, x + 20, y - 45, hppercent, c_black, c_red, c_green, 0, true, true);
+draw_text_ext_transformed(x - 20, y - 50, string(hp),  2, 300, .5, .5, 0); 
+draw_healthbar(x - 20, y - 40, x + 20, y - 35, energypercent, c_black, c_purple, c_yellow, 0, true, true);
+draw_text_ext_transformed(x - 20, y - 40, string(energy),  2, 300, .5, .5, 0); 
+draw_set_color(c_white);
 </string>
           </argument>
         </arguments>

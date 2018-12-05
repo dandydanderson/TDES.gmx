@@ -150,7 +150,6 @@ if(target.hp &lt; 1) {instance_destroy();}
     
 if(gamepad_button_check_pressed(p1_controller_num, gp_shoulderlb))
     {
-
       target = ds_list_find_value(global.p1_enemies, targetnum);
       targetnum = targetnum + 1;
     }

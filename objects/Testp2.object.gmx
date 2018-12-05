@@ -37,6 +37,9 @@ intel = 7;
 agi = 4;
 
 hpmax = floor(str * 2) + floor(intel * 1.33) + floor(agi * 1.5);
+energymax = floor(intel * 2) + floor(agi * 1.8) + floor(str * 1.5);
+
+energy = energymax;
 hp = hpmax;
 hppercent = 100;
 p = 0;
@@ -859,6 +862,7 @@ if (hit == true)
 //set health percentage
 
 hppercent = (hp/hpmax) * 100;
+energypercent = (energy/energymax) * 100;
 
 
 //parry and block management
@@ -1138,6 +1142,13 @@ if(animation == "false") {
     animatingImage = 0;
     }
 
+    //pvp knockout timer
+
+if (hp &lt; 1) {
+    hitStun = 180;
+    hp = hpmax;
+    
+    }
 </string>
           </argument>
         </arguments>
@@ -1774,9 +1785,14 @@ if(square_pressed &amp;&amp; !animation &amp;&amp; state == "target") {
             <kind>1</kind>
             <string>draw_sprite_ext(spr_shadow, 1, x, y+15, .6, .8, 0, c_black, 0.5);
 draw_self();
-image_blend = c_blue;
-draw_healthbar(x - 20, y - 40, x + 20, y - 35, hppercent, c_black, c_red, c_green, 0, true, true);
-draw_text_ext_transformed(x - 20, y - 40, string(hp),  2, 300, .5, .5, 0); 
+image_blend = make_color_rgb(130, 130, 255);
+
+draw_set_color(c_black)
+draw_healthbar(x - 20, y - 50, x + 20, y - 45, hppercent, c_black, c_red, c_green, 0, true, true);
+draw_text_ext_transformed(x - 20, y - 50, string(hp),  2, 300, .5, .5, 0); 
+draw_healthbar(x - 20, y - 40, x + 20, y - 35, energypercent, c_black, c_purple, c_yellow, 0, true, true);
+draw_text_ext_transformed(x - 20, y - 40, string(energy),  2, 300, .5, .5, 0); 
+draw_set_color(c_white);
 </string>
           </argument>
         </arguments>

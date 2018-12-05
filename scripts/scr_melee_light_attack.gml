@@ -13,8 +13,7 @@ FREE FORM ATTACKS
 //temp sword swing sound effect
 
 audio_play_sound(swordswing, 5, false);
-
-
+energy = energy - floor(15/agi);
 
 
 tempState = substate;

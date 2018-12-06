@@ -24,7 +24,7 @@ if (state == "notarget" and dir = "left")
     {
 
     //set self to animation to true
-    animation = "true";
+    animation = true;
     
     //set timer to return animation to false
     animationCounter = 44;
@@ -41,7 +41,7 @@ if (state == "notarget" and dir = "right")
    
     
       //set self to animation to true
-    animation = "true";
+    animation = true;
     
     //set timer to return animation to false
     animationCounter = 44;
@@ -56,7 +56,7 @@ if (state == "notarget" and dir = "up")
     
     
       //set self to animation to true
-    animation = "true";
+    animation = true;
     
     //set timer to return animation to false
     animationCounter = 44;
@@ -70,7 +70,7 @@ if (state == "notarget" and dir = "down")
 
     
       //set self to animation to true
-    animation = "true";
+    animation = true;
     
     //set timer to return animation to false
     animationCounter = 44;
@@ -90,7 +90,7 @@ if (state == "target")
     {
 
     //set self to animation to true
-    animation = "true";
+    animation = true;
     
     //set timer to return animation to false
     animationCounter = 44;

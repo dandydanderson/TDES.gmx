@@ -30,6 +30,7 @@ intel = 1;
 agi = 4;
 alive = true;
 speed = 0;
+target = Testp1;
 
 hpmax = (str * 2) + floor(intel * 1.33) + floor(agi * 1.5);
 hp = hpmax;
@@ -50,7 +51,6 @@ last_sprite = 0;
 target = -1;
 attacktimer = 0;
 
-depth = -y;
 
 
 //hitbox and hurtbox code
@@ -146,14 +146,57 @@ if(hitbox != -1){
     }
 }
 
+
 if (hit == true)
 {
-
-hitStun = 10;
-hit = false;
-audio_play_sound(swordhit, 6, false);
-hp = hp - damagePending;
-
+    if(substate == "parry")
+    {
+       hit = false; 
+      audio_play_sound(parry, 6, false);
+      animation = false;
+      hitBy.owner.hitStun = 30;
+      
+      speed = 7;
+        animating = true;
+        animatetimer= irandom_range(30,180);
+      
+        substate = "attacking";
+        attacktimer = 24;
+    
+     if (direction &gt; 315 or direction &lt;= 45)
+        {
+        sprite_index = spr_skeleton_attack_right;
+        image_speed = .25;
+        }
+        
+    if (direction &gt; 45 and direction &lt;= 135)
+        {
+         sprite_index = spr_skeleton_attack_up;
+        image_speed = .25;
+        }
+        
+    if (direction &gt; 135 and direction &lt;= 225)
+        {
+         sprite_index = spr_skeleton_attack_left;
+        image_speed = .25;
+        }
+        
+    if (direction &gt; 225 and direction &lt;= 315)
+        {
+         sprite_index = spr_skeleton_attack_down;
+        image_speed = .25;
+        }
+      
+      
+      
+      
+    }
+    else{
+    hitStun = 10;
+    hit = false;
+    audio_play_sound(swordhit, 6, false);
+    hp = hp - damagePending;
+    }
 }
 
 if (hitStun &gt; 0)
@@ -238,6 +281,16 @@ for (i = 0; i &lt; ds_list_size(global.player_units); i++)
         }
     }
     
+    
+    
+for (i = 0; i &lt; ds_list_size(global.player_units); i++)
+    {
+    if (distance_to_object(ds_list_find_value(global.player_units,i)) &lt; distance_to_object(target))
+        {
+    target = ds_list_find_value(global.player_units,i);
+        }
+    }
+    
 if (state == "peaceful") {
         script_execute(scr_wander, 180, 7);
         if(speed &gt; 0) {speed = speed - 1;}
@@ -277,7 +330,7 @@ if (attacktimer &lt; 1 and substate == "attacking")
     substate = "gaurd";
     }
     
-if(distance_to_object(Testp1) &lt;15)
+if(distance_to_object(target) &lt;15)
         {
         x = xprevious;
         y = yprevious;
@@ -353,8 +406,14 @@ if(!place_free(x,yprevious)){
             <kind>1</kind>
             <string>depth = -y;
 
-target_x = Testp1.x;
-target_y = Testp1.y;
+
+//make a for loop to find closest player here
+
+//
+
+
+target_x = target.x;
+target_y = target.y;
 if(alive){
 if ( state == "aggro") 
     {
@@ -392,7 +451,7 @@ if (substate != "attacking")
     
 
 if (hitStun == 0 and !animating ){
-    if( distance_to_object(Testp1) &gt; 10 and state == "aggro"){
+    if( distance_to_object(target) &gt; 10 and state == "aggro"){
     speed = 1;
 
     }
@@ -407,8 +466,20 @@ for(i = 0; i &lt;ds_list_size(global.player_units);i++) {
     
     if (distance_to_object(ds_list_find_value(global.player_units,i))&lt;30 and !animating)
     
-    {
-        speed = 7;
+    { if(ds_list_find_value(global.player_units, i).substate == "attack" || ds_list_find_value(global.player_units, i).substate == "heavyattack"){
+    
+    substate = "parry";
+    
+     }
+      
+       
+        
+         
+          
+           
+            
+             
+               /* speed = 7;
         animating = true;
         animatetimer= irandom_range(30,180);
       
@@ -439,7 +510,7 @@ for(i = 0; i &lt;ds_list_size(global.player_units);i++) {
         image_speed = .25;
         }
         
-        
+       */ 
     } 
 }
 }   

@@ -191,6 +191,7 @@
     <scripts name="Collisions">
       <script>scripts\scr_create_hurtbox.gml</script>
       <script>scripts\scr_create_hitbox.gml</script>
+      <script>scripts\scr_create_projectile_hitbox.gml</script>
     </scripts>
     <scripts name="NPC scripts">
       <script>scripts\scr_wander.gml</script>
@@ -215,6 +216,11 @@
     </scripts>
     <scripts name="camera">
       <script>scripts\scr_views.gml</script>
+    </scripts>
+    <scripts name="TEMPMAINPlayerScripts">
+      <script>scripts\scr_on_create.gml</script>
+      <script>scripts\scr_player_step.gml</script>
+      <script>scripts\scr_player_end_step.gml</script>
     </scripts>
   </scripts>
   <fonts name="fonts">

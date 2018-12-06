@@ -12,7 +12,7 @@ if(startUpCounter == 0)
 
     
 //left motion
-if(animation == "false")
+if(animation == false)
 {
 if(walk_dir = "left")
     {

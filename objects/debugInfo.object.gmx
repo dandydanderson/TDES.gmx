@@ -53,7 +53,7 @@ draw_text(10, 25, "Current State: " + Testp1.state);
 draw_text(10, 40, "Current Substate: " + Testp1.substate);
 draw_text(10, 55, "Animating?: " + string(Testp1.animation));
 draw_text(10, 70, string(Testp1.startUpCounter));
-draw_text(10, 90, "Angle to enemy: " + string(Testp1.p1TargetDir));
+draw_text(10, 90, "Angle to enemy: " + string(Testp1.TargetDir));
 draw_text(10, 110, "Direction to enemy: " + Testp1.targetFace);
 draw_text(10, 150, string(Testp1.hp));
 
@@ -99,6 +99,9 @@ draw_text(10, 530, "View 2: " + string(view_visible[2]));
 draw_text(10, 550, "View 3: " + string(view_visible[3]));
 draw_text(10, 570, "View 4: " + string(view_visible[4]));
 draw_text(10, 590, "Camera Counter: " + string(obj_camera_center.camera_counter));
+
+if(instance_exists(obj_fireball)){
+    draw_text(10, 610, "Fireball Owner: " + string(obj_fireball.owner));}
 
 
 </string>

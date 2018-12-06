@@ -25,10 +25,101 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>speed = 0;
+            <string>/*
+speed = 0;
 direction = 0;
+damage = 20;
+size = 0;
+alive = true;
+life = 91;
+str = 4;
+intel = 4;
+agi = 4;
+xOffset = 0;
+yOffset = 0;
+
+*/
+
 damage = 0;
 size = 0;
+owner = 0;
+life = 91; 
+hitbox = -1;
+collisionWait = 8;
+fadeCounter = 3;
+
+ready = false;
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="3" enumb="2">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>//hitbox
+if(hitbox != -1){
+    with(hitbox){
+
+
+        //check to see if the hurtbox is touching your hitbox        
+        with(obj_hurtbox){
+            if(place_meeting(x,y,other) &amp;&amp; other.owner != owner){ //check for collision and make sure the hitbox owner isn't the collision
+                //ignore check
+                //checking collision from the hitbox object
+                with(other){
+                    //check to see if your target is on the ignore list
+                    //if it is on the ignore list, dont hit it again
+                    for(i = 0; i &lt; ds_list_size(ignoreList); i ++){
+                        if(ignoreList[|i] = other.owner){
+                            ignore = true;
+                            break;
+                        }
+                    }
+
+                    //if it is NOT on the ignore list, hit it, and add it to
+                    //the ignore list
+                    if(!ignore){
+                        other.owner.hit = true;
+                        other.owner.hitBy = id;
+                        other.owner.damagePending = damage;
+                        ds_list_add(ignoreList,other.owner);
+                        instance_destroy();
+                        
+                    
+                    }
+                }
+            }
+        }
+    }
+ }   
+    
+collisionWait = collisionWait - 1;
+
+if(collisionWait &lt; 0){
+    
+if(place_meeting(x,y,obj_hurtbox)){fadeCounter = fadeCounter - 1;}
+    }
+    
+if(fadeCounter &lt; 0){instance_destroy();}
+
+
+
+
 </string>
           </argument>
         </arguments>
@@ -52,6 +143,34 @@ size = 0;
           <argument>
             <kind>1</kind>
             <string>depth = -y;
+
+
+life = life - 1;
+
+if(life &lt; 0) {instance_destroy();}
+
+if(ready == true and !hitbox){
+
+hitbox = scr_create_projectile_hitbox(90, 10, 20, owner.intel, owner);
+hitbox.image_xscale = 30;
+hitbox.image_yscale = 30;
+
+
+ready = false;
+
+    }
+
+
+if(life == 1 and instance_exists(hitbox)){
+    instance_destroy(hitbox);
+    }
+
+//hitbox
+if(instance_exists(hitbox)){
+    hitbox.x = x - 13;
+    hitbox.y = y;
+    }
+    
 </string>
           </argument>
         </arguments>

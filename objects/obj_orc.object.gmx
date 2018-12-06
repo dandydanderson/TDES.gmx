@@ -81,7 +81,12 @@ ds_list_add(global.p1_enemies, self);
 if(instance_exists(Testp2)){
     ds_list_add(global.p2_enemies, self);
     }
-
+if(instance_exists(Testp3)){
+    ds_list_add(global.p3_enemies, self);
+    }
+if(instance_exists(Testp4)){
+    ds_list_add(global.p4_enemies, self);
+    }
 
 
 
@@ -117,12 +122,12 @@ with(hurtbox){
 //hitbox
 if(hitbox != -1){
     with(hitbox){
-        x = other.x + xOffset;
+        x = other.x + xOffset; //x being the hitbox's x and other being the this object
         y = other.y + yOffset;
 
         //check to see if the hurtbox is touching your hitbox        
         with(obj_hurtbox){
-            if(place_meeting(x,y,other) &amp;&amp; other.owner != owner){
+            if(place_meeting(x,y,other) &amp;&amp; other.owner != owner){ //check for collision and make sure the hitbox owner isn't the collision
                 //ignore check
                 //checking collision from the hitbox object
                 with(other){

@@ -138,11 +138,14 @@ animation = argument5;
 //sprite control on attack with no target
 //need to come back and reduce the size of this
 
+
+if(state == "notarget"){
+
 //--------------------
     //Light Attack
 //--------------------
 
-if(state == "notarget"){
+
 if(substate == "attack" && dir == "left")
     {
     sprite_index = spr_attack_left;
@@ -165,11 +168,12 @@ if(substate == "attack" && dir == "up")
     sprite_index = spr_attack_up;
     image_speed = 1;
     }
+    
 //--------------
     //Heavy Attack
 //-------------------
     
-if(state == "notarget"){
+
 if(substate == "heavyattack" && dir == "left")
     {
     sprite_index = spr_heavy_attack_left;
@@ -238,14 +242,17 @@ if(substate == "heavyattack" && dir == "up")
     
     }
     
-}
+
 
     //sprite control on attack with a target
-    //------
-    //Light Attack Target
-    //----------------
+    
     
 if(state == "target"){
+    
+//------
+//Light Attack Target
+//----------------
+    
 
 if(substate == "attack" && targetFace == "left")
     {
@@ -284,7 +291,6 @@ if(substate == "attack" && targetFace == "up")
     //Heavy Attack Target
 //-------------------
     
-if(state == "target"){
 if(substate == "heavyattack" && targetFace == "left")
     {
 
@@ -310,7 +316,7 @@ if(substate == "heavyattack" && targetFace == "up")
          sprite_index = spr_heavy_attack_up;
      image_speed = .5;
     }
-}
+
        
        if(substate == "parry"){
     
@@ -550,14 +556,14 @@ if(substate == "cast" && targetFace == "right")
       image_index = animatingImage;
       }
     }
-if(substate == "attack" && targetFace == "down")
+if(substate == "cast" && targetFace == "down")
     {
     if(sprite_index != spr_cast_down){
          sprite_index = spr_cast_down;
          image_index = animatingImage;
         }
     }
-if(substate == "attack" && targetFace == "up")
+if(substate == "cast" && targetFace == "up")
     {
     if(sprite_index != spr_cast_up){
     sprite_index = spr_cast_up;

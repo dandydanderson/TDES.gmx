@@ -14,6 +14,7 @@
     <sound>sound\dodge</sound>
     <sound>sound\wallSplat</sound>
     <sound>sound\cast</sound>
+    <sound>sound\fireball</sound>
   </sounds>
   <sprites name="sprites">
     <sprite>sprites\spr_invisWall</sprite>

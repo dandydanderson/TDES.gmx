@@ -101,8 +101,13 @@ draw_text(10, 570, "View 4: " + string(view_visible[4]));
 draw_text(10, 590, "Camera Counter: " + string(obj_camera_center.camera_counter));
 
 if(instance_exists(obj_fireball)){
-    draw_text(10, 610, "Fireball Owner: " + string(obj_fireball.owner));}
-
+    draw_text(10, 610, "Fireball Owner: " + string(obj_fireball.owner));
+    draw_text(10, 630, "Fireball ID: " + string(obj_fireball.id));}
+    
+draw_text(10, 650, "PlayerID: " + string(Testp1.id));
+if(instance_exists(obj_hitbox)){draw_text(10, 670, "Hitbox ID: " + string(obj_hitbox.id));
+                                draw_text(10, 690, "Hitbox Owner: " + string(obj_hitbox.owner));}
+if(instance_exists(obj_hurtbox)){draw_text(10, 710, "Hurtbox ID: " + string(obj_hurtbox.owner));}
 
 </string>
           </argument>

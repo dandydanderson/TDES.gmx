@@ -61,6 +61,7 @@ if (state == "target"){
         spell.speed = intel + agi;
         spell.damage = intel;
         spell.size = intel + str;
+        spell.owner = self;
          spell.ready = true;
         break;
         

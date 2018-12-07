@@ -25,7 +25,7 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>/*townMus = audio_play_sound(mus_village_music,2,true);
+            <string>townMus = audio_play_sound(mus_village_music,2,true);
 audio_sound_gain(townMus,.5,3000);
 
 
@@ -52,7 +52,7 @@ audio_sound_gain(townMus,.5,3000);
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>/*if (ds_list_size(global.p1_enemies) &gt; 0 and audio_is_playing(mus_village_music))
+            <string>if (ds_list_size(global.p1_enemies) &gt; 0 and audio_is_playing(mus_village_music))
     {
      audio_stop_sound(mus_village_music);
      audio_play_sound(mus_battle,1,true);

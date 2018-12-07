@@ -31,9 +31,9 @@ global.player_units = ds_list_create();
 
 
 instance_create(300, 300, Testp1);
-/*instance_create(300, 400, Testp2);
-instance_create(400, 400 , Testp3);
-instance_create(400, 300, Testp4);
+instance_create(300, 400, Testp2);
+//instance_create(400, 400 , Testp3);
+//instance_create(400, 300, Testp4);
 
 
 </string>
